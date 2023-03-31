@@ -5,12 +5,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { CardComponent } from './card-component/card.component';
 import { DashboardDemosComponent } from './dashboard-demos/dashboard-demos.component';
+import { ToolbarComponent } from './toolbar/toolbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CardComponent,
-    DashboardDemosComponent
+    DashboardDemosComponent,
+    ToolbarComponent
   ],
   imports: [
     BrowserModule,
