@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit} from '@angular/core';
 import {CardComponent} from "../card-component/card.component";
 import {ApiService} from '../api.service';
 
@@ -8,31 +8,24 @@ import {ApiService} from '../api.service';
   styleUrls: ['./dashboard-demos.component.css']
 })
 export class DashboardDemosComponent implements OnInit {
-  forecasts: Forecast[] = [];
+  demos: Demo[] = [];
 
-  constructor(private apiService: ApiService) {
-    this.forecasts = [];
+  constructor(private apiService: ApiService, private elRef: ElementRef) {
+    this.demos = [];
   }
 
   ngOnInit() {
-    this.apiService.getWeatherforecast().subscribe((data: any) => {
-        this.forecasts = data;
+    this.elRef.nativeElement.classList.add("w-100")
+
+    this.apiService.getDemosOfUser(1).subscribe((data: any) => {
+        this.demos = data;
       },
       error => {
         console.log(error)
       })
   }
-
-  ConvertDate(dateStr: number) {
-    let date = new Date(dateStr);
-    return date.getDate()  + "-" + (date.getMonth()) + "-" + date.getFullYear() + " " +
-      date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
-  }
 }
 
-class Forecast {
-  date: number = 0;
-  temperatureC: number = 0;
-  temperatureF: number = 0;
-  summary: string = "";
+class Demo {
+  name: string = "";
 }
