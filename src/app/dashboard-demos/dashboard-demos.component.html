@@ -1,0 +1,4 @@
+<div>Dashboard</div>
+<div class="row">
+  <app-card-component *ngFor="let card of forecasts" class="col-4 my-2" [header]="ConvertDate(card.date)" [body]="'Temperature: '+card.temperatureC+'C'">Hello world</app-card-component>
+</div>
