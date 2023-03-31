@@ -1,0 +1,7 @@
+<h2>Dashboard</h2>
+<div class="row">
+  <app-card-component *ngFor="let forecast of forecasts" class="col-4 my-2" [image]="'test.jpg'">
+  <div class="card-header-text">{{ConvertDate(forecast.date)}}</div>
+  <div class="card-body-text">Temperature: {{forecast.temperatureC}}C</div>
+  </app-card-component>
+</div>
