@@ -5,7 +5,7 @@
     </h4>
   </div>
   <img *ngIf="image != ''" class="card-img-top" style="max-width: 280px" src="assets/images/{{image}}" alt="{{image}}">
-  <hr *ngIf="image != ''">
+  <hr *ngIf="image != ''" class="my-0">
   <div class="card-body">
     <ng-content select=".card-body-text"></ng-content>
   </div>
