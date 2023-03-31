@@ -1,11 +1,11 @@
 <h2>Dashboard</h2>
 <div class="row">
-  <app-card-component *ngFor="let forecast of forecasts" class="col-4 my-2" [image]="'test.jpg'">
+  <card-component *ngFor="let forecast of forecasts" class="col-4 my-2" [image]="'test.jpg'">
   <div class="card-header-text">{{ConvertDate(forecast.date)}}</div>
   <div class="card-body-text">
     <p>Today it is: {{forecast.summary}}</p>
     <p>Temperature: {{forecast.temperatureC}}&deg;C</p>
     <p>Temperature: {{forecast.temperatureF}}&deg;F</p>
   </div>
-  </app-card-component>
+  </card-component>
 </div>

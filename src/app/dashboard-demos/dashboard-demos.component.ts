@@ -3,7 +3,7 @@ import {CardComponent} from "../card-component/card.component";
 import {ApiService} from '../api.service';
 
 @Component({
-  selector: 'app-dashboard-demos-component',
+  selector: 'dashboard-demos-component',
   templateUrl: './dashboard-demos.component.html',
   styleUrls: ['./dashboard-demos.component.css']
 })
