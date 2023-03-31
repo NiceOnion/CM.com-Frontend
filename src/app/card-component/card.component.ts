@@ -7,8 +7,7 @@ import {Component, ElementRef, Input, OnInit} from '@angular/core';
 })
 
 export class CardComponent {
-  @Input() header: string = "";
-  @Input() footer: string = "";
-  @Input() body: string = "";
+  @Input() header: boolean = true;
+  @Input() footer: boolean = false;
   @Input() image: string = "";
 }
