@@ -14,8 +14,8 @@ export class ApiService {
   }
 
   // Define API endpoint URL and send GET request
-  getWeatherforecast() {
-    return this.http.get('https://localhost:7258/weatherforecast', {
+  getDemosOfUser(userId: number) {
+    return this.http.get('https://localhost:7258/demos/' + userId, {
       headers: this.apiHeader
     });
   }
