@@ -17,17 +17,17 @@ export class ApiService {
 
   // Define API endpoint URL and send GET request
   getDemosOfUser(userId: number) {
-    return this.http.get(this.baseUrl.Url + 'demos/' + userId, {
+    return this.http.get(this.baseUrl.Url + 'demo/' + userId, {
       headers: this.apiHeader
     });
   }
 
-  addDemo(demoName: string, userId: number): Observable<any>{
+  addDemo(demoName: string, userId: number): Observable<any> {
     const body = {
       demoName: demoName,
       userId: userId,
     };
 
-    return this.http.post(this.baseUrl.Url + 'demos/add/' + userId, JSON.stringify(body), {headers: this.apiHeader})
+    return this.http.post(this.baseUrl.Url + 'demo/add/' + userId, JSON.stringify(body), {headers: this.apiHeader})
   }
 }
