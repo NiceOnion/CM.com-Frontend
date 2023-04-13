@@ -4,5 +4,5 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class BaseUrlService {
-  public Url = "http://localhost:7258/"
+  public Url = "https://localhost:7258/api/"
 }
