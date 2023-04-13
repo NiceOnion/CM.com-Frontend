@@ -1,17 +1,20 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {HttpClientModule} from '@angular/common/http';
+import {AppRoutingModule} from './app.routing';
 
-import { AppComponent } from './app.component';
-import { CardComponent } from './card-component/card.component';
-import { DashboardDemosComponent } from './dashboard-demos/dashboard-demos.component';
-import { ToolbarComponent } from './toolbar/toolbar.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NewDemoComponent } from './new-demo/new-demo.component';
+import {AppComponent} from './app.component';
+import {CardComponent} from './card-component/card.component';
+import {DashboardDemosComponent} from './dashboard-demos/dashboard-demos.component';
+import {ToolbarComponent} from './toolbar/toolbar.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {NewDemoComponent} from './new-demo/new-demo.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
 import {MatInputModule} from "@angular/material/input";
 import {FormsModule} from "@angular/forms";
+import {TestPageComponent} from './test-page/test-page.component';
+import {HomeComponent} from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -19,11 +22,14 @@ import {FormsModule} from "@angular/forms";
     CardComponent,
     DashboardDemosComponent,
     ToolbarComponent,
-    NewDemoComponent
+    NewDemoComponent,
+    TestPageComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    AppRoutingModule,
     BrowserAnimationsModule,
     MatDialogModule,
     MatButtonModule,
@@ -33,4 +39,5 @@ import {FormsModule} from "@angular/forms";
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
