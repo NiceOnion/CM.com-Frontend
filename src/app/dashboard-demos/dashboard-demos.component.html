@@ -3,7 +3,10 @@
   <card-component *ngFor="let demo of demos" class="col-4 my-2" [image]="'test.jpg'">
   <div class="card-header-text">{{demo.name}}</div>
   <div class="card-body-text">
-    this is a demo
+    <p>this is a demo</p>
+    <div class="text-center">
+    <a href="#" class="btn btn-primary self-center">Edit Demo {{demo.id}}</a>
+    </div>
   </div>
   </card-component>
   <button mat-raised-button (click)="openPopUp()">Create a new Demo</button>
