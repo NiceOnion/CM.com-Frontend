@@ -1,0 +1,10 @@
+<p>Login</p>
+<div class="row w-100">
+  <label>Username</label>
+  <input [(ngModel)]="name" class="form-control" id="name" />
+  <br/>
+  <label>Password</label>
+  <input [(ngModel)]="password" type="password" class="form-control" id="password" />
+  <br/>
+  <button mat-raised-button (click)="loginClick()">Log in</button>
+</div>

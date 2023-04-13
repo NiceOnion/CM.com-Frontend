@@ -30,4 +30,13 @@ export class ApiService {
 
     return this.http.post(this.baseUrl.Url + 'demo/add/' + userId, JSON.stringify(body), {headers: this.apiHeader})
   }
+
+  login(name : string, password: string){
+    const body = {
+      id: 0,
+      name: name,
+      password: password
+    }
+    return this.http.post(this.baseUrl.Url + 'Account/Login', body, {headers: this.apiHeader});
+  }
 }
