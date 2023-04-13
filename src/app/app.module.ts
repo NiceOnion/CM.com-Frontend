@@ -13,7 +13,6 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
 import {MatInputModule} from "@angular/material/input";
 import {FormsModule} from "@angular/forms";
-import {TestPageComponent} from './test-page/test-page.component';
 import {HomeComponent} from './home/home.component';
 
 @NgModule({
@@ -23,7 +22,6 @@ import {HomeComponent} from './home/home.component';
     DashboardDemosComponent,
     ToolbarComponent,
     NewDemoComponent,
-    TestPageComponent,
     HomeComponent
   ],
   imports: [
