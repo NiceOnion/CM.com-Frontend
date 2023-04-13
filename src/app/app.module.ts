@@ -14,6 +14,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatInputModule} from "@angular/material/input";
 import {FormsModule} from "@angular/forms";
 import {HomeComponent} from './home/home.component';
+import { EditDemoComponent } from './edit-demo/edit-demo.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {HomeComponent} from './home/home.component';
     DashboardDemosComponent,
     ToolbarComponent,
     NewDemoComponent,
-    HomeComponent
+    HomeComponent,
+    EditDemoComponent
   ],
   imports: [
     BrowserModule,
