@@ -31,15 +31,17 @@ export class DashboardDemosComponent implements OnInit {
     const dialogRef = this.dialog.open(NewDemoComponent);
 
     dialogRef.afterClosed().subscribe((result) => {
-      new Demo(result)
+      new Demo(result, 0)
     });
   }
 }
 
 class Demo {
+  id: number = 0;
   name: string = "";
 
-  constructor(name:string) {
+  constructor(name:string, id: number) {
     this.name = name;
+    this.id = id;
   }
 }
