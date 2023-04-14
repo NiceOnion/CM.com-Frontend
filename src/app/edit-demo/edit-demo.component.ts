@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-edit-demo',
@@ -7,4 +7,26 @@ import { Component } from '@angular/core';
 })
 export class EditDemoComponent {
 
+}
+
+class flowchart {
+  Name: string = "";
+  Items: flowchartItem[] = [];
+  constructor(name: string) {
+    this.Name = name;
+  }
+}
+class flowchartItem {
+  Name: string = "";
+  Question: string = "";
+  Responses: response[] = [];
+  constructor(name: string) {
+
+  }
+}
+
+class response {
+  SearchWords: string[] = [];
+  ResponseText: string = "";
+  GoTo: flowchartItem | undefined;
 }

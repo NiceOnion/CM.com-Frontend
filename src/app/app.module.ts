@@ -36,7 +36,7 @@ import { EditDemoComponent } from './edit-demo/edit-demo.component';
     MatDialogModule,
     MatButtonModule,
     MatInputModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
