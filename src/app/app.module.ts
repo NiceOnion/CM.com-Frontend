@@ -16,6 +16,10 @@ import {FormsModule} from "@angular/forms";
 import {HomeComponent} from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { EditDemoComponent } from './edit-demo/edit-demo.component';
+import {NgFlowchartModule} from "@joelwenzel/ng-flowchart";
+import { FlowchartComponent } from './flowchart/flowchart.component';
+import { EditQuestionComponent } from './edit-question/edit-question.component';
+import { PhoneDisplayComponent } from './phone-display/phone-display.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +30,10 @@ import { EditDemoComponent } from './edit-demo/edit-demo.component';
     NewDemoComponent,
     HomeComponent,
     LoginComponent,
-    EditDemoComponent
+    EditDemoComponent,
+    FlowchartComponent,
+    EditQuestionComponent,
+    PhoneDisplayComponent
   ],
   imports: [
     BrowserModule,
@@ -37,6 +44,7 @@ import { EditDemoComponent } from './edit-demo/edit-demo.component';
     MatButtonModule,
     MatInputModule,
     FormsModule,
+    NgFlowchartModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
