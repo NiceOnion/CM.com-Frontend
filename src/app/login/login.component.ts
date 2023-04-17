@@ -11,20 +11,22 @@ export class LoginComponent {
   name: string = '';
   password: string = '';
   incorrectTxt: string = '';
+  error: string = '';
   user: User[] = [];
   constructor(private ApiService: ApiService, private router: Router) {}
   loginClick(): void {
     this.ApiService.login(this.name, this.password).subscribe(
       (data: any) => {
         if (data == 0) {
-          console.log('Lmao');
+          this.error =
+            'Could not find account. Did you use the correct username and password?';
         } else {
           localStorage.setItem('currentUserId', data);
           this.router.navigate(['']);
         }
       },
       (error) => {
-        console.log(error);
+        this.error = error;
       }
     );
   }
