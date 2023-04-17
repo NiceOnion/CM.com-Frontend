@@ -26,7 +26,7 @@ export class LoginComponent {
         }
       },
       (error) => {
-        this.error = error;
+        this.error = 'It seems our servers are currently down.';
       }
     );
   }
