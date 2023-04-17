@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./edit-demo.component.css']
 })
 export class EditDemoComponent {
-
+  question!: string;
+  response!: string;
+  wordsToLook!: string;
+  onSubmit() {
+    console.log('Question:', this.question);
+    console.log('Response:', this.response);
+    console.log('Words to look:', this.wordsToLook);
+  }
 }
