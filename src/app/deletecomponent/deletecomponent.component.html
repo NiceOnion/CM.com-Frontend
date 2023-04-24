@@ -1,0 +1,15 @@
+<h1>Are you Sure to delete this demo?</h1>
+<br>
+<div class="input-group input-group-lg" *ngIf="object">
+    <span class="input-group-text" id="inputGroup-sizing-lg"> DemoName</span>
+    <input type="text" [value]="demoname" disabled class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+  </div>
+  <br>
+  <br>
+  <div>
+<button type="button"(click)="deleteItem()" class="btn btn-danger btn-lg">Delete</button>
+
+<button type="button"routerLink="/dashboard-demos" class="btn btn-primary btn-lg">Back</button>
+
+</div>
+
