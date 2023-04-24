@@ -3,6 +3,8 @@ import {BrowserModule} from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
 import {AppRoutingModule} from './app.routing';
 
+
+
 import {AppComponent} from './app.component';
 import {CardComponent} from './card-component/card.component';
 import {DashboardDemosComponent} from './dashboard-demos/dashboard-demos.component';
@@ -16,6 +18,7 @@ import {FormsModule} from "@angular/forms";
 import {HomeComponent} from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { EditDemoComponent } from './edit-demo/edit-demo.component';
+import { DeletecomponentComponent } from './deletecomponent/deletecomponent.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,8 @@ import { EditDemoComponent } from './edit-demo/edit-demo.component';
     NewDemoComponent,
     HomeComponent,
     LoginComponent,
-    EditDemoComponent
+    EditDemoComponent,
+    DeletecomponentComponent
   ],
   imports: [
     BrowserModule,

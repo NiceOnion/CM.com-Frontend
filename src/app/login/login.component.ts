@@ -5,6 +5,7 @@ import {ApiService} from "../api.service";
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
+  
 })
 export class LoginComponent {
   name: string = "";

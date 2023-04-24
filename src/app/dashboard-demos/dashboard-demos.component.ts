@@ -8,6 +8,7 @@ import {NewDemoComponent} from "../new-demo/new-demo.component";
   selector: 'dashboard-demos-component',
   templateUrl: './dashboard-demos.component.html',
   styleUrls: ['./dashboard-demos.component.css']
+  
 })
 export class DashboardDemosComponent implements OnInit {
   demos: Demo[] = [];
