@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../api.service';
 
@@ -10,23 +10,27 @@ import { ApiService } from '../api.service';
 export class LoginComponent {
   name: string = '';
   password: string = '';
-  incorrectTxt: string = '';
   error: string = '';
-  user: User[] = [];
+  loading: boolean = false;
   constructor(private ApiService: ApiService, private router: Router) {}
   loginClick(): void {
+    this.error = "";
+    this.loading = true;
     this.ApiService.login(this.name, this.password).subscribe(
       (data: any) => {
         if (data == 0) {
+          this.loading = false;
           this.error =
-            'Could not find account. Did you use the correct username and password?';
+            'No account was found. Did you use the correct username and password?';
         } else {
           localStorage.setItem('currentUserId', data);
-          this.router.navigate(['']);
+          localStorage.setItem('currentUserName', this.name);
+          this.router.navigate(['home']);
         }
       },
       (error) => {
-        this.error = 'It seems our servers are currently down.';
+        this.loading = false;
+        this.error = 'Could not connect to our internal servers.';
       }
     );
   }
@@ -35,10 +39,4 @@ export class LoginComponent {
   inputTypes() {
     this.show = !this.show;
   }
-}
-
-class User {
-  id: number = 0;
-  name: string = '';
-  password: string = '';
 }

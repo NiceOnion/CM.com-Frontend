@@ -1,29 +1,41 @@
-<p>Login</p>
-<div class="row w-100">
-  <label>Username</label>
-  <input [(ngModel)]="name" class="form-control" id="name" />
-  <br />
-  <label>Password</label>
-  <input
-    [(ngModel)]="password"
-    [type]="show ? 'text' : 'password'"
-    class="form-control"
-    id="password"
-  />
-  <br />
-  <div class="form-check">
-    <input
-      id="showPassInput"
-      class="form-check-input"
-      type="checkbox"
-      (change)="inputTypes()"
-    />
-    <label for="showPassInput" id="hidingTXT"
-      >{{ show ? "Hide" : "Show" }} Password</label
-    >
-  </div>
-  <button mat-raised-button (click)="loginClick()">Log in</button>
-  <div class="alert alert-danger" role="alert" *ngIf="error != ''">
-    {{ error }}
+<div *ngIf="!loading">
+  <h1>Login</h1>
+  <div class="row w-100">
+    <div class="form-group">
+      <label>Username</label>
+      <input [(ngModel)]="name" class="form-control" id="name" />
+    </div>
+    <br />
+    <div class="form-group">
+      <label>Password</label>
+        <input
+          [(ngModel)]="password"
+          [type]="show ? 'text' : 'password'"
+          class="form-control"
+          id="password"
+        />
+      <div class="form-check">
+        <input
+          id="showPassInput"
+          class="form-check-input"
+          type="checkbox"
+          (change)="inputTypes()"
+        />
+        <label for="showPassInput" id="hidingTXT"
+        >{{ show ? "Hide" : "Show" }} Password</label
+        >
+      </div>
+    </div>
+      <div>
+        <br />
+        <button type="submit" mat-raised-button (click)="loginClick()">Log in</button>
+      </div>
+    <div>
+      <br />
+      <div class="alert alert-danger" role="alert" *ngIf="error != ''">
+        {{ error }}
+      </div>
+    </div>
   </div>
 </div>
+<img src="https://i.stack.imgur.com/kOnzy.gif" *ngIf="loading">
