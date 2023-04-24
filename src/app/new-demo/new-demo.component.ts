@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import {MatDialog, MatDialogRef} from "@angular/material/dialog";
+import {Component, Inject} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {ApiService} from "../api.service";
 
 @Component({
@@ -11,13 +11,16 @@ export class NewDemoComponent {
 
   public demoName : string = "";
 
-  constructor(public dialogRef: MatDialogRef<NewDemoComponent>, private ApiService: ApiService ) {}
+  constructor(public dialogRef: MatDialogRef<NewDemoComponent>, @Inject(MAT_DIALOG_DATA) public data: any, private ApiService: ApiService ) {}
 
   cancel(): void {
     this.dialogRef.close();
   }
 
-  confirm(): void {
-
+  onConfirm(): void {
+    this.dialogRef.close();
+    const data = {var1: 1 ,var2: this.demoName};
+    this.ApiService.addDemo(data);
+    console.log("The new demo has been sent to the server: " + data);
   }
 }

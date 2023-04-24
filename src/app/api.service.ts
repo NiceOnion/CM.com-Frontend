@@ -22,13 +22,8 @@ export class ApiService {
     });
   }
 
-  addDemo(demoName: string, userId: number): Observable<any> {
-    const body = {
-      demoName: demoName,
-      userId: userId,
-    };
-
-    return this.http.post(this.baseUrl.Url + 'demo/add/' + userId, JSON.stringify(body), {headers: this.apiHeader})
+  addDemo(demoName: object) {
+    return this.http.post(this.baseUrl.Url + 'Demo/add', demoName)
   }
 
   login(name : string, password: string){
