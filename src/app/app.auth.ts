@@ -22,10 +22,8 @@ export class LoginRedirect implements CanActivate {
     if(name != null && id != null){
       sessionStorage.setItem('currentUserId', id)
       sessionStorage.setItem('currentUserName', name)
-      this._router.navigate(['home'])
-      return false;
     }
-    if(sessionStorage.getItem('currentUserId') == null){
+    if(sessionStorage.getItem('currentUserName') == null){
       return true;
     }
     else{
