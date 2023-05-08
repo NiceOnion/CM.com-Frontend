@@ -10,6 +10,7 @@ import {ApiService} from "../api.service";
 export class NewDemoComponent {
 
   demoName : string = "test demo";
+  loggedInUserId = 1;
 
   constructor(public dialogRef: MatDialogRef<NewDemoComponent>, @Inject(MAT_DIALOG_DATA) public data: any, private ApiService: ApiService ) {}
 
@@ -19,8 +20,6 @@ export class NewDemoComponent {
 
   onConfirm(): void {
     this.dialogRef.close();
-    const data = {var1: 1 ,var2: this.demoName};
-    this.ApiService.addDemo(data);
-    console.log("The new demo has been sent to the server: " + data);
+    this.ApiService.addDemo(this.demoName, this.loggedInUserId);
   }
 }
