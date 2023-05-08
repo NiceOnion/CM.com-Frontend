@@ -20,6 +20,7 @@ import {NgFlowchartModule} from "@joelwenzel/ng-flowchart";
 import { FlowchartComponent } from './flowchart/flowchart.component';
 import { EditQuestionComponent } from './edit-question/edit-question.component';
 import { PhoneDisplayComponent } from './phone-display/phone-display.component';
+import { EditFlowElementComponent } from './edit-user-flow-element/edit-flow-element.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { PhoneDisplayComponent } from './phone-display/phone-display.component';
     EditDemoComponent,
     FlowchartComponent,
     EditQuestionComponent,
-    PhoneDisplayComponent
+    PhoneDisplayComponent,
+    EditFlowElementComponent,
   ],
   imports: [
     BrowserModule,

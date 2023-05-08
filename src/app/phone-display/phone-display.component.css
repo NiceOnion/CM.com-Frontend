@@ -4,6 +4,7 @@
   background: lightgray;
   height: 100%;
   min-height: 500px;
+  max-height: 500px;
   border-radius: 10px;
 }
 
@@ -13,12 +14,17 @@
   border-radius: 10px 10px 0 0;
 }
 
+.phone-display .header .name {
+  max-width: 170px;
+}
+
 .phone-display .header .row {
   height: 40px;
 }
 
 .phone-display-sms .header {
   background: gray;
+  color: white;
 }
 
 .phone-display-whatsapp .header {
@@ -30,6 +36,8 @@
   width: 100%;
   height: calc(100% - (40px * 2));
   max-height: calc(100% - (40px * 2));
+  overflow-y: auto;
+  padding-bottom: 10px;
 }
 
 .phone-display .footer {
@@ -37,13 +45,18 @@
   height: 40px;
   border-radius: 0 0 10px 10px;
 }
+.phone-display .footer .row {
+  --bs-gutter-x: 0;
+  padding-left: 5px;
+  padding-right: 5px;
+}
 
 .phone-display-sms .footer {
-  background: gray;
+  /*background: gray;*/
 }
 
 .phone-display-whatsapp .footer {
-  background: green;
+  /*background: green;*/
 }
 
 .phone-display .footer input {
@@ -51,21 +64,13 @@
   height: 35px;
   border-radius: 10px;
   width:100%;
+  background: white;
 }
 
 .message {
   width: 80%;
   min-height: 20px;
   margin-top: 10px;
-}
-
-.phone-display-sms .message {
-  background: gray;
-}
-
-.phone-display-whatsapp .message {
-  background: green;
-  color: white;
 }
 
 .message-in { /*User input message*/

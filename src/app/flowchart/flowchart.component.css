@@ -17,7 +17,7 @@
 .flowchart-step {
   min-width: 80px;
   width: fit-content;
-  max-width: 150px;
+  max-width: 350px;
   border-radius: 10px;
   text-align: center;
   color: white;
@@ -56,6 +56,10 @@
 
 .flowchart-step .step-content {
   padding: 5px;
+}
+
+.palette.row {
+  --bs-gutter-x: 0;
 }
 
 
