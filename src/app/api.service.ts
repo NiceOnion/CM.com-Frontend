@@ -39,4 +39,8 @@ export class ApiService {
     }
     return this.http.post(this.baseUrl.Url + 'Account/Login', body, {headers: this.apiHeader});
   }
+
+  deleteDemo(demoId: number) {
+    return this.http.delete(this.baseUrl.Url + "Demo/" + demoId, {headers: this.apiHeader})
+  }
 }

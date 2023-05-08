@@ -3,13 +3,7 @@ import axios from 'axios';
 import { ActivatedRoute } from '@angular/router';
 import {ChangeDetectorRef  } from '@angular/core';
 import { Router } from '@angular/router';
-
-
-
-
-
-
-
+import { ApiService } from 'app/api.service';
 
 @Component({
   selector: 'app-deletecomponent',
@@ -17,10 +11,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./deletecomponent.component.css']
   
 })
-
-
-
-
 export class DeletecomponentComponent {
   deleteSuccess = false; 
   deleteError = false; 
@@ -29,15 +19,12 @@ export class DeletecomponentComponent {
   itemid2?: String; 
   object: any;
  
-
- 
-  constructor(private route: ActivatedRoute, private cd: ChangeDetectorRef,private router: Router ) { }
+  constructor(private route: ActivatedRoute, private cd: ChangeDetectorRef,private router: Router, private apiServes: ApiService) { }
   ngOnInit() {
     this.route.params.subscribe(params => {
        const id = params['id'];
        this.itemid2 = id
 
-     
     axios.get(`https://localhost:7258/api/Demo/Single/${this.itemid2}`)
         .then(response => {
           this.object = response.data;
