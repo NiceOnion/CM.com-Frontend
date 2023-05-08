@@ -32,7 +32,7 @@ export class DashboardDemosComponent implements OnInit {
     const dialogRef = this.dialog.open(NewDemoComponent);
 
     dialogRef.afterClosed().subscribe((result) => {
-      new Demo(result, 0)
+      new Demo(result, 0, "")
     });
   }
 }
@@ -40,9 +40,11 @@ export class DashboardDemosComponent implements OnInit {
 class Demo {
   id: number = 0;
   name: string = "";
+  description: string = "";
 
-  constructor(name:string, id: number) {
+  constructor(name:string, id: number, description: string) {
     this.name = name;
     this.id = id;
+    this.description = description;
   }
 }
