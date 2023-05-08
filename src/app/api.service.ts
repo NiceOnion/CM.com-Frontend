@@ -26,7 +26,6 @@ export class ApiService {
     return this.http.post(this.baseUrl.Url + 'Demo/add', demoName)
   }
 
-  login(name : string, password: string){
     const body = {
       id: 0,
       name: name,

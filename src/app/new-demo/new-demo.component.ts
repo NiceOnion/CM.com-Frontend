@@ -9,7 +9,7 @@ import {ApiService} from "../api.service";
 })
 export class NewDemoComponent {
 
-  public demoName : string = "";
+  demoName : string = "test demo";
 
   constructor(public dialogRef: MatDialogRef<NewDemoComponent>, @Inject(MAT_DIALOG_DATA) public data: any, private ApiService: ApiService ) {}
 

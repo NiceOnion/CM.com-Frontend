@@ -1,0 +1,10 @@
+<div class="row">
+  <app-flowchart class="col-md-8" [demoType]="demoType"></app-flowchart>
+  <div class="col-md-4">
+    <app-phone-display [demoType]="demoType">
+      <div class="phone-messages">
+        <div *ngFor="let message of messages" class="message message-{{message.Type}}">{{message.Content}}</div>
+      </div>
+    </app-phone-display>
+  </div>
+</div>

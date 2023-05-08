@@ -2,3 +2,27 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/***************
+Flowchart arrow
+****************/
+/*.flow-sms .ngflowchart-arrow #arrowhead {*/
+/*  fill:blue;*/
+/*}*/
+
+#arrowhead {
+  fill: black;
+}
+#arrowpath {
+  stroke: black;
+}
+
+.phone-display-sms .message {
+  background: gray;
+  color: white;
+}
+
+.phone-display-whatsapp .message {
+  background: green;
+  color: white;
+}

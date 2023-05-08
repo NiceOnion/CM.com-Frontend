@@ -1,8 +1,8 @@
 import {Component, ElementRef, OnInit} from '@angular/core';
-import {CardComponent} from "../card-component/card.component";
 import {ApiService} from '../api.service';
 import {MatDialog} from "@angular/material/dialog";
 import {NewDemoComponent} from "../new-demo/new-demo.component";
+import { CardComponent } from 'app/card-component/card.component';
 
 @Component({
   selector: 'dashboard-demos-component',
