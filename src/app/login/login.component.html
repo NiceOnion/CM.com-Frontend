@@ -1,9 +1,9 @@
 <!-- The login form will be disabled if the system is performing the login process-->
 
 <div class="alert alert-warning text-center" role="alert" *ngIf="savePasswordBox">
-  <label>Do you want to stay logged in?</label>
-  <button mat-raised-button (click)="toHome(true)">Yes</button>
-  <button mat-raised-button (click)="toHome(false)">No</button>
+  <label>Do you want to stay logged in? </label>
+  <button mat-raised-button style="margin-left: 2px" (click)="toHome(true)">Yes</button>
+  <button mat-raised-button style="margin-left: 2px" (click)="toHome(false)">No</button>
 </div>
 
 <div *ngIf="!loading && !savePasswordBox">
