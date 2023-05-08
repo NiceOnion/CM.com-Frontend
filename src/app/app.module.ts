@@ -20,7 +20,7 @@ import { FlowchartComponent } from './flowchart/flowchart.component';
 import { EditQuestionComponent } from './edit-question/edit-question.component';
 import { PhoneDisplayComponent } from './phone-display/phone-display.component';
 import { EditFlowElementComponent } from './edit-user-flow-element/edit-flow-element.component';
-import { DeletecomponentComponent } from './deletecomponent/deletecomponent.component';
+import { DeleteDemoComponent } from './delete-demo/delete-demo.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +32,7 @@ import { DeletecomponentComponent } from './deletecomponent/deletecomponent.comp
     HomeComponent,
     LoginComponent,
     EditDemoComponent,
-    DeletecomponentComponent,
+    DeleteDemoComponent,
     FlowchartComponent,
     EditQuestionComponent,
     PhoneDisplayComponent,

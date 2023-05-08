@@ -1,13 +1,11 @@
 <h2>Dashboard</h2>
 <div class="row w-100">
-  <card-component *ngFor="let demo of demos" class="col-4 my-2" [image]="'test.jpg'">
+  <card-component *ngFor="let demo of demos" class="col-xl-4 col-sm-6 my-2" [image]="'test.jpg'">
   <div class="card-header-text">{{demo.name}}</div>
   <div class="card-body-text">
     <p>{{demo.description}}</p>
     <div class="text-center">
-      <a href="/edit-demo/{{demo.id}}" class="btn btn-primary self-center">Edit Demo</a>
-      <a href=" /deletecomponent/{{demo.id}}" class="btn btn-danger self-center">Delete Demo</a>
-  
+      <a href="/edit-demo/{{demo.id}}" class="btn btn-primary self-center">Edit</a>  
     </div>
   </div>
   </card-component>

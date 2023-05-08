@@ -44,3 +44,7 @@ button[type="submit"] {
 button[type="submit"]:hover {
   background-color: #0062cc;
 }
+
+.delete-button {
+  max-height: 30px;
+}

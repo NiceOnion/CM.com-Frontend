@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DeletecomponentComponent } from './deletecomponent.component';
+import { DeleteDemoComponent } from './delete-demo.component';
 import { RouterModule, Routes } from '@angular/router';
 
 
 describe('DeletecomponentComponent', () => {
-  let component: DeletecomponentComponent;
-  let fixture: ComponentFixture<DeletecomponentComponent>;
+  let component: DeleteDemoComponent;
+  let fixture: ComponentFixture<DeleteDemoComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DeletecomponentComponent ]
+      declarations: [ DeleteDemoComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DeletecomponentComponent);
+    fixture = TestBed.createComponent(DeleteDemoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
