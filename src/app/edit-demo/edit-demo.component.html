@@ -1,15 +1,26 @@
-<div>
+<div class="row">
+<div class="col-6">
+  <div class="list">
+    <!-- <a *ngFor="let question of questions" href="/edit-question/{{question.Id}}" class="list-item question">{{question.Name}}</a> -->
+  </div>
+</div>
+<div class="col-auto edit-details">
     <h2>Edit Demo</h2>
     <form>
-      <label>
+      <label class="mt-2">
         Name:
-        <input type="text" name="name">
+        <input type="text" [value]="demo.Name" name="name" [(ngModel)]="name">
       </label>
-      <label>
-        Visibility:
-        <input type="checkbox" name="visibility">
+      <label class="mt-2">
+        Description:
       </label>
-      <button type="submit">Save</button>
+        <textarea name="description" [value]="demo.Description" [(ngModel)]="description">{{demo.Description}}</textarea>
+      <label class="mt-2">
+        <input type="checkbox" name="visibility" [checked]="demo.Visibility" [(ngModel)]="visibility">
+        Visibility
+      </label>
+      <button type="button" class="btn btn-primary" (click)="saveDemo()">Save</button>
     </form>
   </div>
+</div>
   
