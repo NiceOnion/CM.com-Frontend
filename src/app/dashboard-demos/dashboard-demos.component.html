@@ -3,7 +3,7 @@
   <card-component *ngFor="let demo of demos" class="col-4 my-2" [image]="'test.jpg'">
   <div class="card-header-text">{{demo.name}}</div>
   <div class="card-body-text">
-    <p>this is a demo</p>
+    <p>{{demo.description}}</p>
     <div class="text-center">
       <a href="/edit-demo/{{demo.id}}" class="btn btn-primary self-center">Edit Demo</a>
       <a href=" /deletecomponent/{{demo.id}}" class="btn btn-danger self-center">Delete Demo</a>

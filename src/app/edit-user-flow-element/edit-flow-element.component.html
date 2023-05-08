@@ -1,0 +1,12 @@
+<h2 mat-dialog-title>{{Title}}</h2>
+<div mat-dialog-content>
+  <form>
+    <mat-form-field>
+      <input matInput placeholder="{{placeholder}}" name="content" [(ngModel)]="content">
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="cancel()">Cancel</button>
+  <button mat-button (click)="save()">Save</button>
+</div>

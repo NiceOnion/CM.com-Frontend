@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import {MatDialog, MatDialogRef} from "@angular/material/dialog";
+import {Component, Inject} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {ApiService} from "../api.service";
 
 @Component({
@@ -9,15 +9,17 @@ import {ApiService} from "../api.service";
 })
 export class NewDemoComponent {
 
-  public demoName : string = "";
+  demoName : string = "test demo";
+  loggedInUserId = 1;
 
-  constructor(public dialogRef: MatDialogRef<NewDemoComponent>, private ApiService: ApiService ) {}
+  constructor(public dialogRef: MatDialogRef<NewDemoComponent>, @Inject(MAT_DIALOG_DATA) public data: any, private ApiService: ApiService ) {}
 
   cancel(): void {
     this.dialogRef.close();
   }
 
-  confirm(): void {
-
+  onConfirm(): void {
+    this.dialogRef.close();
+    this.ApiService.addDemo(this.demoName, this.loggedInUserId);
   }
 }
