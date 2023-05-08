@@ -26,11 +26,31 @@ export class ApiService {
     return this.http.post(this.baseUrl.Url + 'Demo/add', demoName)
   }
 
+  login(name: string, password: string) {
     const body = {
       id: 0,
       name: name,
       password: password
     }
     return this.http.post(this.baseUrl.Url + 'Account/Login', body, {headers: this.apiHeader});
+  }
+
+  getFlow(demoId: number, flowId: number) {
+    return this.http.get(this.baseUrl.Url + 'demo/' + demoId + '/flow/' + flowId, {headers: this.apiHeader});
+  }
+
+  createFlow() {
+
+  }
+
+  updateFlow(demoId: number, flowId: number, name: string, description: string, json: string | object) {
+    if (typeof (json) == "object") json = JSON.stringify(json)
+    const body = {
+      id: flowId,
+      name: name,
+      description: description,
+      json: json
+    }
+    return this.http.put(this.baseUrl.Url + "demo/" + demoId + "/flow/" + flowId + "/edit", body, {headers: this.apiHeader})
   }
 }
