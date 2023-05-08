@@ -13,6 +13,7 @@ export class LoginComponent {
   error: string = '';
   loading: boolean = false;
   constructor(private ApiService: ApiService, private router: Router) {}
+  //Fetches an account from the back-end and stores them in a local cookie
   loginClick(): void {
     this.error = "";
     this.loading = true;
@@ -28,7 +29,7 @@ export class LoginComponent {
           this.router.navigate(['home']);
         }
       },
-      (error) => {
+      () => {
         this.loading = false;
         this.error = 'Could not connect to our internal servers.';
       }
@@ -36,6 +37,7 @@ export class LoginComponent {
   }
   show: boolean = false;
 
+  //A boolean that toggles whether the password should be shown or not
   inputTypes() {
     this.show = !this.show;
   }
