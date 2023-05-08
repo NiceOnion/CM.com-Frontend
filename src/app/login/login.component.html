@@ -1,5 +1,12 @@
 <!-- The login form will be disabled if the system is performing the login process-->
-<div *ngIf="!loading">
+
+<div class="alert alert-warning text-center" role="alert" *ngIf="savePasswordBox">
+  <label>Do you want to stay logged in?</label>
+  <button mat-raised-button (click)="toHome(true)">Yes</button>
+  <button mat-raised-button (click)="toHome(false)">No</button>
+</div>
+
+<div *ngIf="!loading && !savePasswordBox">
   <h1>Login</h1>
   <div class="row w-100">
     <div class="form-group">
@@ -49,7 +56,7 @@
       <br />
       <div id="danger" class="alert alert-danger" role="alert" *ngIf="error != ''">
         {{ error }}
-        <button id="boxClose" (click)="error = ''">X</button>
+        <button class="boxClose" (click)="error = ''">X</button>
       </div>
     </div>
   </div>

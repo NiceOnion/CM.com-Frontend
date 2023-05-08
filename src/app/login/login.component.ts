@@ -12,6 +12,8 @@ export class LoginComponent {
   password: string = '';
   error: string = '';
   loading: boolean = false;
+  savePasswordBox: boolean = false;
+  private data: any;
   constructor(private ApiService: ApiService, private router: Router) {}
   //Fetches an account from the back-end and stores them in a local cookie
   loginClick(): void {
@@ -24,9 +26,11 @@ export class LoginComponent {
           this.error =
             'No account was found. Did you use the correct username and password?';
         } else {
-          localStorage.setItem('currentUserId', data);
-          localStorage.setItem('currentUserName', this.name);
-          this.router.navigate(['home']);
+          this.data = data;
+          sessionStorage.setItem('currentUserId', data);
+          sessionStorage.setItem('currentUserName', this.name)
+          this.loading = false;
+          this.savePasswordBox = true;
         }
       },
       () => {
@@ -35,6 +39,15 @@ export class LoginComponent {
       }
     );
   }
+
+  toHome(savePassword: boolean){
+    if(savePassword){
+      localStorage.setItem('currentUserId', this.data);
+      localStorage.setItem('currentUserName', this.name)
+    }
+    this.router.navigate(['home']);
+  }
+
   show: boolean = false;
 
   //A boolean that toggles whether the password should be shown or not

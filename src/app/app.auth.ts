@@ -7,7 +7,7 @@ import { CanActivate, Router } from '@angular/router';
 export class AuthGuard implements CanActivate {
   constructor(private _router : Router){}
   canActivate () : boolean{
-    return localStorage.getItem('currentUserId') != null;
+    return sessionStorage.getItem('currentUserId') != null;
   }
 }
 
@@ -17,7 +17,13 @@ export class AuthGuard implements CanActivate {
 export class LoginRedirect implements CanActivate {
   constructor(private _router : Router){}
   canActivate () : boolean{
-    if(localStorage.getItem('currentUserId') == null){
+    let name = localStorage.getItem('currentUserName');
+    let id = localStorage.getItem('currentUserId');
+    if(name != null && id != null){
+      sessionStorage.setItem('currentUserId', id)
+      sessionStorage.setItem('currentUserName', name)
+    }
+    if(sessionStorage.getItem('currentUserId') == null){
       return true;
     }
     else{

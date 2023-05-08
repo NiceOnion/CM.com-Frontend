@@ -11,11 +11,11 @@ export class ToolbarComponent {
   constructor(private ApiService: ApiService, private router: Router) {}
   //Retrieves the username stored in the cookies
   getName() {
-    return localStorage.getItem('currentUserName');
+    return sessionStorage.getItem('currentUserName');
   }
   //If the user is logged in, the icon button will redirect to the home page. Otherwise, it will return to the login page
   iconButton(): string{
-    if(localStorage.getItem('currentUserName') != null){
+    if(sessionStorage.getItem('currentUserName') != null){
       return "home";
     }
     else{
@@ -25,6 +25,7 @@ export class ToolbarComponent {
   //A function that clears all the user's cookies and returns the login page
   logOut(): void {
     localStorage.clear();
+    sessionStorage.clear();
     this.router.navigate(['']);
   }
 }
