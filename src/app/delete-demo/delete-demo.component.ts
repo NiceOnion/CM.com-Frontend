@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
-import { ApiService } from 'app/api.service';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-delete-demo',

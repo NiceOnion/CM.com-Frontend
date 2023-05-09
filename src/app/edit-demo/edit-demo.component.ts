@@ -2,8 +2,7 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { ApiService } from 'app/api.service';
-import axios from 'axios';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-edit-demo',

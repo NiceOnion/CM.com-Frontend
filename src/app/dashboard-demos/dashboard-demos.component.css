@@ -1,0 +1,5 @@
+button[mat-raised-button] {
+    background: var(--bs-success);
+    color:white;
+    width: fit-content;
+}
