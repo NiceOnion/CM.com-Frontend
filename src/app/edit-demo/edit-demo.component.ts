@@ -14,11 +14,21 @@ export class EditDemoComponent {
   name?: string;
   description?: string;
   visibility?: boolean;
-  quesitons: Question[] = [];
+  questions: Question[] = [];
 
   constructor(private route: ActivatedRoute, private apiService: ApiService) { }
 
   ngOnInit() {
+    var q1 = new Question();
+    q1.Id = 1;
+    q1.Name = "Default Flow";
+    var q2 = new Question();
+    q2.Id = 4;
+    q2.Name = "Main Flow";
+    this.questions = [
+      q1, q2
+    ]
+
     this.route.params.subscribe(params => {
       this.demo.Id = params['id'];
     });
@@ -32,8 +42,8 @@ export class EditDemoComponent {
     this.demo.Name = this.name;
     this.demo.Description = this.description;
     this.demo.Visibility = this.visibility;
-    this.apiService.editDemo(this.demo.Id, this.demo.Name, this.demo.Description, this.demo.Visibility).subscribe((data:any) =>{
-      if(data == true){
+    this.apiService.editDemo(this.demo.Id, this.demo.Name, this.demo.Description, this.demo.Visibility).subscribe((data: any) => {
+      if (data == true) {
         alert("Saved successfully!")
       }
     });
