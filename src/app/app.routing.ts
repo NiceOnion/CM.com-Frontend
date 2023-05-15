@@ -2,13 +2,18 @@ import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { HomeComponent } from './home/home.component';
 import {LoginComponent} from "./login/login.component";
-import {AuthGuard, LoginRedirect} from "./app.auth";
 import {EditDemoComponent} from "./edit-demo/edit-demo.component";
+import {DeleteDemoComponent}from "./delete-demo/delete-demo.component"
+import { DashboardDemosComponent } from './dashboard-demos/dashboard-demos.component';
+import {EditQuestionComponent} from "./edit-question/edit-question.component";
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
-  { path: '', component: LoginComponent, canActivate: [LoginRedirect] },
+  { path: '', component: HomeComponent },
   { path: 'edit-demo/:id', component: EditDemoComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'delete-demo/:id', component: DeleteDemoComponent },
+  { path: 'dashboard-demos', component: DashboardDemosComponent },
+  { path: 'edit-question/:id', component: EditQuestionComponent },
   // Add any other routes here
 ];
 

@@ -1,0 +1,57 @@
+.page {
+  width: 40vw;
+}
+
+div.edit-details-card {
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px #ccc;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 10px;
+}
+
+input[type="text"] {
+  padding: 5px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+input[type="checkbox"] {
+  margin-left: 5px;
+}
+
+button[type="submit"] {
+  padding: 5px 10px;
+  border-radius: 3px;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #0062cc;
+}
+
+.delete-button {
+  max-height: 30px;
+}
+
+.question:hover {
+  background: var(--bs-primary)
+}

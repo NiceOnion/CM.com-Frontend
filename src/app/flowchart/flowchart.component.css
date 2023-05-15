@@ -1,0 +1,65 @@
+.flow-sms .flowchart-container {
+  background-color: lightgray;
+}
+
+.flow-whatsapp .flowchart-container {
+  background-color: darkseagreen;
+}
+
+.flowchart-container {
+  width: 100%;
+  min-height: 500px;
+  background-size: 20px 20px;
+  background-image: linear-gradient(to right, grey 1px, transparent 1px),
+  linear-gradient(to bottom, grey 1px, transparent 1px);
+}
+
+.flowchart-step {
+  min-width: 80px;
+  width: fit-content;
+  max-width: 350px;
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+  padding: 3px 8px;
+}
+
+.flow-sms .flowchart-step {
+  background: gray;
+}
+
+.flow-whatsapp .flowchart-step {
+  background: green;
+}
+
+.flowchart-step-side {
+  color: white;
+  margin: 5px 1px;
+  border-radius: 2px;
+}
+
+.col-md-3, .col-md-9 {
+  padding: 0;
+}
+
+.flow-sms .flowchart-step-side {
+  background: gray;
+}
+
+.flow-whatsapp .flowchart-step-side {
+  background: green;
+}
+
+.flowchart-step .step-heading {
+  padding: 5px;
+}
+
+.flowchart-step .step-content {
+  padding: 5px;
+}
+
+.palette.row {
+  --bs-gutter-x: 0;
+}
+
+
