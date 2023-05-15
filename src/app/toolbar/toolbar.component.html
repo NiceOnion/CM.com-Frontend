@@ -1,8 +1,42 @@
-<nav class="navbar bg-primary text-light">
+<nav class="navbar navbar-expand-lg bg-primary text-light">
   <div class="container-fluid">
-    <a class="navbar-brand text-light" href="#">
-      <img src="/assets/images/cm.svg" alt="Logo" width="30" class="d-inline-block align-text-top">
+    <a class="navbar-brand text-light" href="{{iconButton()}}">
+      <img
+        src="/assets/images/cm.svg"
+        alt="Logo"
+        width="30"
+        class="d-inline-block align-text-top"
+      />
       Demo flow editor
     </a>
+    <!--If a user is logged in and the screen is zoomed in too much to show all menu options, this menu dropdown button will appear-->
+    <button *ngIf="getName() != null" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!--If a user is logged in, menu navigation buttons will appear-->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" *ngIf="getName() != null">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active text-light" aria-current="page" href="/home">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active text-light" aria-current="page" href="/home">My Demos</a>
+        </li>
+      </ul>
+    </div>
+    <!--When the users presses the button with their name on it, this dropdown menu will appear-->
+    <div class="dropdown" *ngIf="getName() != null">
+      <button
+        class="btn btn-primary dropdown-toggle"
+        type="button"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        {{ getName() }}
+      </button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" (click)="logOut()">Log Out</a></li>
+      </ul>
+    </div>
   </div>
 </nav>

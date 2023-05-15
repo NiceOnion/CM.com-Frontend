@@ -1,6 +1,8 @@
 import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {ApiService} from "../api.service";
+import {Router} from "@angular/router";
+import {map, Observable, pluck} from "rxjs";
 
 @Component({
   selector: 'app-new-demo',
@@ -8,11 +10,10 @@ import {ApiService} from "../api.service";
   styleUrls: ['./new-demo.component.css']
 })
 export class NewDemoComponent {
-
   demoName : string = "test demo";
   loggedInUserId = 1;
 
-  constructor(public dialogRef: MatDialogRef<NewDemoComponent>, @Inject(MAT_DIALOG_DATA) public data: any, private ApiService: ApiService ) {}
+  constructor(private router: Router, public dialogRef: MatDialogRef<NewDemoComponent>, @Inject(MAT_DIALOG_DATA) public data: any, private ApiService: ApiService ) {}
 
   cancel(): void {
     this.dialogRef.close();
@@ -20,6 +21,8 @@ export class NewDemoComponent {
 
   onConfirm(): void {
     this.dialogRef.close();
-    this.ApiService.addDemo(this.demoName, this.loggedInUserId);
+    this.ApiService.addDemo(this.demoName, this.loggedInUserId).subscribe( data =>
+      this.ApiService.getDemoByName(this.demoName).subscribe((demo: any) => {
+        this.router.navigate(['/edit-demo/'+ demo.id])})) ;
   }
 }

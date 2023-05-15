@@ -1,0 +1,10 @@
+.boxClose{
+  background-color: transparent;
+  font-weight: normal;
+  border: 0;
+}
+
+.boxClose:hover{
+  color: #68111A;
+  font-weight: bold;
+}
