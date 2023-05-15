@@ -1,5 +1,8 @@
-div.edit-details {
-  margin: 20px;
+.page {
+  width: 40vw;
+}
+
+div.edit-details-card {
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -47,4 +50,8 @@ button[type="submit"]:hover {
 
 .delete-button {
   max-height: 30px;
+}
+
+.question:hover {
+  background: var(--bs-primary)
 }
