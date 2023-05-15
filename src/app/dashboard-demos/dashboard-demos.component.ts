@@ -8,7 +8,6 @@ import { CardComponent } from 'app/card-component/card.component';
   selector: 'dashboard-demos-component',
   templateUrl: './dashboard-demos.component.html',
   styleUrls: ['./dashboard-demos.component.css']
-
 })
 export class DashboardDemosComponent implements OnInit {
   cardAmountPerPage: number = 6;
@@ -17,6 +16,7 @@ export class DashboardDemosComponent implements OnInit {
   Arr = Array;
 
   demos: Demo[] = [];
+  archivedDemos: Demo[] = [];
 
   constructor(private apiService: ApiService, private elRef: ElementRef, public dialog: MatDialog) {
     this.demos = [];
@@ -32,6 +32,13 @@ export class DashboardDemosComponent implements OnInit {
       error => {
         console.log(error)
       })
+    this.apiService.getArchivedDemosOfUser(1).subscribe((data: any) => {
+      this.archivedDemos = data;
+      this.pageNationAmountArchive = Math.ceil(this.archivedDemos.length / this.cardAmountPerPage);
+    },
+      error => {
+        console.log(error)
+      })
   }
 
   openPopUp(): void {
@@ -40,6 +47,11 @@ export class DashboardDemosComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       new Demo(result, 0, "")
     });
+  }
+  reinstateDemo(id: number) {
+    this.apiService.reinstateDemo(id).subscribe((data)=> {
+      window.location.reload();
+    })
   }
 }
 

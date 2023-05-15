@@ -13,7 +13,7 @@ export class ApiService {
   }
 
   //#region default JSON
-  defaultJson = {"root":{"id":"s1681993885978","type":"flowchartStepContent","data":{"Title":"User Input","Type":"user","Content":"hello, good, morning, evening"},"children":[{"id":"s1681993932118","type":"flowchartStepContent","data":{"Title":"System response","Type":"system","Content":"Hello, how can I help you?"},"children":[{"id":"s1681994358332","type":"flowchartStepContent","data":{"Title":"System response","Type":"system","Content":"Or do you have a question I can answer?"},"children":[{"id":"s1683805412124","type":"flowchartStepContent","data":{"Title":"User Input","Type":"user","Content":"Thanks"},"children":[]},{"id":"s1683805414118","type":"flowchartStepContent","data":{"Title":"User Input","Type":"user","Content":""},"children":[]}]}]}]},"connectors":[]}
+  defaultJson = { "root": { "id": "s1681993885978", "type": "flowchartStepContent", "data": { "Title": "User Input", "Type": "user", "Content": "hello, good, morning, evening" }, "children": [{ "id": "s1681993932118", "type": "flowchartStepContent", "data": { "Title": "System response", "Type": "system", "Content": "Hello, how can I help you?" }, "children": [{ "id": "s1681994358332", "type": "flowchartStepContent", "data": { "Title": "System response", "Type": "system", "Content": "Or do you have a question I can answer?" }, "children": [{ "id": "s1683805412124", "type": "flowchartStepContent", "data": { "Title": "User Input", "Type": "user", "Content": "Thanks" }, "children": [] }, { "id": "s1683805414118", "type": "flowchartStepContent", "data": { "Title": "User Input", "Type": "user", "Content": "" }, "children": [] }] }] }] }, "connectors": [] }
   //#endregion
   constructor(private http: HttpClient, private baseUrl: BaseUrlService) {
   }
@@ -23,6 +23,9 @@ export class ApiService {
     return this.http.get(this.baseUrl.Url + 'demo/' + userId, {
       headers: this.apiHeader
     });
+  }
+  getArchivedDemosOfUser(userId: number) {
+    return this.http.get(this.baseUrl.Url + "demo/" + userId + "/archived", { headers: this.apiHeader })
   }
   getDemo(demoId: number) {
     return this.http.get(this.baseUrl.Url + 'demo/Single/' + demoId, {
@@ -46,7 +49,9 @@ export class ApiService {
 
     return this.http.put(this.baseUrl.Url + 'demo/' + demoId, body, { headers: this.apiHeader })
   }
-
+  reinstateDemo(demoId: number) {
+    return this.http.put(this.baseUrl.Url + "demo/" + demoId + "/reinstate", { headers: this.apiHeader })
+  }
   addDemo(demoName: string, userId: number): Observable<any> {
     const body = {
       visibility: true,
@@ -56,7 +61,7 @@ export class ApiService {
       accountId: userId,
     };
 
-    return this.http.post( this.baseUrl.Url + 'Demo/add', body, { headers: this.apiHeader })
+    return this.http.post(this.baseUrl.Url + 'Demo/add', body, { headers: this.apiHeader })
   }
   deleteDemo(demoId: number) {
     return this.http.delete(this.baseUrl.Url + "Demo/" + demoId, { headers: this.apiHeader })

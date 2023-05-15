@@ -31,13 +31,10 @@ export class DeleteDemoComponent {
 
   deleteItem() {
     const itemId = 'id';
-    if (confirm("Are you sure you want to remove this demo.\n" +
-      "Demos can be reinstated in the demo archive.")) {
-      this.apiService.deleteDemo(this.demoId).subscribe((data: any) => {
-        console.log(data);
-        
-        window.location.href = "/";
-      })
-    }
+    this.apiService.deleteDemo(this.demoId).subscribe((data: any) => {
+      console.log(data);
+
+      window.location.href = "/";
+    })
   }
 }
