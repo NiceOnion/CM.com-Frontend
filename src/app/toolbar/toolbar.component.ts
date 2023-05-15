@@ -16,16 +16,16 @@ export class ToolbarComponent {
   //If the user is logged in, the icon button will redirect to the home page. Otherwise, it will return to the login page
   iconButton(): string{
     if(sessionStorage.getItem('currentUserName') != null){
-      return "home";
+      return "";
     }
     else{
-      return "";
+      return "login";
     }
   }
   //A function that clears all the user's cookies and returns the login page
   logOut(): void {
     localStorage.clear();
     sessionStorage.clear();
-    this.router.navigate(['']);
+    this.router.navigate(['login']);
   }
 }

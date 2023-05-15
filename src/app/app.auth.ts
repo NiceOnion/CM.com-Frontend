@@ -7,7 +7,13 @@ import { CanActivate, Router } from '@angular/router';
 export class AuthGuard implements CanActivate {
   constructor(private _router : Router){}
   canActivate () : boolean{
-    return sessionStorage.getItem('currentUserId') != null;
+    if(sessionStorage.getItem('currentUserName') != null){
+      return true;
+    }
+    else{
+      this._router.navigate(['login'])
+      return false;
+    }
   }
 }
 
@@ -27,7 +33,7 @@ export class LoginRedirect implements CanActivate {
       return true;
     }
     else{
-      this._router.navigate(['home'])
+      this._router.navigate([''])
       return false;
     }
   }
