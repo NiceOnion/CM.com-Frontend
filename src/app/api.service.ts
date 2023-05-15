@@ -53,7 +53,7 @@ export class ApiService {
       accountId: userId,
     };
 
-    return this.http.post( this.baseUrl.Url + 'add', body, { headers: this.apiHeader })
+    return this.http.post( this.baseUrl.Url + 'Demo/add', body, { headers: this.apiHeader })
   }
   deleteDemo(demoId: number) {
     return this.http.delete(this.baseUrl.Url + "Demo/" + demoId, { headers: this.apiHeader })

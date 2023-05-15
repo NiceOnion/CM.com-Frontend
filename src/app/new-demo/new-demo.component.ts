@@ -21,7 +21,8 @@ export class NewDemoComponent {
 
   onConfirm(): void {
     this.dialogRef.close();
-    this.ApiService.addDemo(this.demoName, this.loggedInUserId);
-    this.ApiService.getDemoByName(this.demoName).subscribe(id => { this.router.navigate(['/edit-demo/{{id}}'])});
+    this.ApiService.addDemo(this.demoName, this.loggedInUserId).subscribe( data =>
+      this.ApiService.getDemoByName(this.demoName).subscribe((demo: any) => {
+        this.router.navigate(['/edit-demo/'+ demo.id])})) ;
   }
 }
