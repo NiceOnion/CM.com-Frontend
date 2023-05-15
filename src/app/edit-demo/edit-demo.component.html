@@ -1,9 +1,12 @@
 <div class="row page justify-content-between">
   <div class="col-lg-4 mb-3">
-    <div class="fs-3 mb-3">Questions</div>
+    <div class="fs-3 mb-3">Flows</div>
     <div class="list-group">
-      <a *ngFor="let question of questions" href="/edit-question/{{question.Id}}"
-        class="list-group-item question">{{question.Name}}</a>
+      <div class="list-group-item p-0">
+        <button mat-raised-button (click)="createNewFlow()" class="w-100 bg-success text-light"><i class="bi bi-plus-lg"></i> Add Flow</button>
+      </div>
+      <a *ngFor="let flow of flows" href="/edit-question/{{flow.Id}}"
+        class="list-group-item question">{{flow.Name}}</a>
     </div>
   </div>
   <div class="col-auto mx-auto edit-details-card">

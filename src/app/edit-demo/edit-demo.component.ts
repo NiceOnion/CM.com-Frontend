@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../api.service';
+import { MatDialog } from '@angular/material/dialog';
+import { NewFlowComponent } from 'app/new-flow/new-flow.component';
 
 @Component({
   selector: 'app-edit-demo',
@@ -14,29 +16,30 @@ export class EditDemoComponent {
   name?: string;
   description?: string;
   visibility?: boolean;
-  questions: Question[] = [];
+  flows: Flow[] = [];
 
-  constructor(private route: ActivatedRoute, private apiService: ApiService) { }
+  constructor(private route: ActivatedRoute, private apiService: ApiService, public dialog: MatDialog) { }
 
   ngOnInit() {
-    var q1 = new Question();
-    q1.Id = 1;
-    q1.Name = "Default Flow";
-    var q2 = new Question();
-    q2.Id = 4;
-    q2.Name = "Main Flow";
-    this.questions = [
-      q1, q2
-    ]
 
     this.route.params.subscribe(params => {
       this.demo.Id = params['id'];
     });
+
     this.apiService.getDemo(this.demo.Id).subscribe((data: any) => {
       this.demo.Name = this.name = data.name;
       this.demo.Description = this.description = data.description;
       this.demo.Visibility = this.visibility = data.visibility;
     });
+    this.apiService.getFlowsOfDemo(this.demo.Id).subscribe((data: any) => {
+      data.forEach((element: any) => {
+        console.log(element);
+
+        this.flows.push(new Flow(element.id, element.name))
+      });
+      console.log(this.flows);
+
+    })
   }
   saveDemo() {
     this.demo.Name = this.name;
@@ -45,6 +48,19 @@ export class EditDemoComponent {
     this.apiService.editDemo(this.demo.Id, this.demo.Name, this.demo.Description, this.demo.Visibility).subscribe((data: any) => {
       if (data == true) {
         alert("Saved successfully!")
+      }
+    });
+  }
+  createNewFlow() {
+    const dialogRef = this.dialog.open(NewFlowComponent);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      
+      if (result != false) {
+        console.log("result = " + result);
+        this.apiService.addFlow(this.demo.Id, result).subscribe((data:any ) => {
+          window.location.reload();
+        })
       }
     });
   }
@@ -59,7 +75,11 @@ class Demo {
   }
 }
 
-class Question {
+class Flow {
   Id: number = 1;
-  Name?: string;
+  Name: string;
+  constructor(id: number, name: string) {
+    this.Id = id;
+    this.Name = name;
+  }
 }

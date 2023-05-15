@@ -12,6 +12,9 @@ export class ApiService {
     "ApiKey": "ApiKeyApi"
   }
 
+  //#region default JSON
+  defaultJson = {"root":{"id":"s1681993885978","type":"flowchartStepContent","data":{"Title":"User Input","Type":"user","Content":"hello, good, morning, evening"},"children":[{"id":"s1681993932118","type":"flowchartStepContent","data":{"Title":"System response","Type":"system","Content":"Hello, how can I help you?"},"children":[{"id":"s1681994358332","type":"flowchartStepContent","data":{"Title":"System response","Type":"system","Content":"Or do you have a question I can answer?"},"children":[{"id":"s1683805412124","type":"flowchartStepContent","data":{"Title":"User Input","Type":"user","Content":"Thanks"},"children":[]},{"id":"s1683805414118","type":"flowchartStepContent","data":{"Title":"User Input","Type":"user","Content":""},"children":[]}]}]}]},"connectors":[]}
+  //#endregion
   constructor(private http: HttpClient, private baseUrl: BaseUrlService) {
   }
 
@@ -79,5 +82,19 @@ export class ApiService {
       json: json
     }
     return this.http.put(this.baseUrl.Url + "demo/" + demoId + "/flow/" + flowId + "/edit", body, { headers: this.apiHeader })
+  }
+
+  addFlow(demoId: number, flowName: string) {
+    const body = {
+      Id: 0,
+      Name: flowName,
+      Description: "",
+      Json: JSON.stringify(this.defaultJson)
+    }
+    return this.http.post(this.baseUrl.Url + "demo/" + demoId + "/flow/add", body, { headers: this.apiHeader })
+  }
+
+  getFlowsOfDemo(demoId: number) {
+    return this.http.get(this.baseUrl.Url + "demo/" + demoId + "/flows", { headers: this.apiHeader })
   }
 }
