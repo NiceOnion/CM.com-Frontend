@@ -27,6 +27,12 @@ export class ApiService {
     });
   }
 
+  getDemoByName(demoName: string) {
+    return this.http.get(this.baseUrl.Url + 'demo/SingleByName/' + demoName, {
+      headers: this.apiHeader
+    });
+  }
+
   editDemo(demoId: number, demoName?: string, demoDescription?: string, demoVisibility?: boolean) {
     const body = {
       id: demoId,
@@ -40,11 +46,14 @@ export class ApiService {
 
   addDemo(demoName: string, userId: number): Observable<any> {
     const body = {
-      demoName: demoName,
-      userId: userId,
+      visibility: true,
+      id: 0,
+      description: "",
+      name: demoName,
+      accountId: userId,
     };
 
-    return this.http.post(this.baseUrl.Url + 'demo/add/' + userId, JSON.stringify(body), { headers: this.apiHeader })
+    return this.http.post( this.baseUrl.Url + 'add', body, { headers: this.apiHeader })
   }
   deleteDemo(demoId: number) {
     return this.http.delete(this.baseUrl.Url + "Demo/" + demoId, { headers: this.apiHeader })
