@@ -21,6 +21,7 @@ import { EditQuestionComponent } from './edit-question/edit-question.component';
 import { PhoneDisplayComponent } from './phone-display/phone-display.component';
 import { EditFlowElementComponent } from './edit-user-flow-element/edit-flow-element.component';
 import { DeleteDemoComponent } from './delete-demo/delete-demo.component';
+import { NewFlowComponent } from './new-flow/new-flow.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { DeleteDemoComponent } from './delete-demo/delete-demo.component';
     EditQuestionComponent,
     PhoneDisplayComponent,
     EditFlowElementComponent,
+    NewFlowComponent,
   ],
   imports: [
     BrowserModule,
