@@ -46,7 +46,8 @@
           <div *ngFor="let demo of archivedDemos.slice(0, (archivedDemos.length /2)+0.5)" class="row border rounded py-2 my-1 align-items-center justify-content-between">
             <div class="col-6">{{demo.name}}</div>
             <div class="col-auto">
-              <button (click)="reinstateDemo(demo.id)" class="btn btn-warning">Reinstate Demo</button>
+              <button (click)="reinstateDemo(demo.id)" class="btn btn-warning"><i class="bi bi-arrow-counterclockwise"></i></button>
+              <button (click)="deleteDemo(demo.id)" class="btn btn-danger"><i class="bi bi-trash"></i></button>
             </div>
           </div>
         </div>
@@ -54,7 +55,8 @@
           <div *ngFor="let demo of archivedDemos.slice((archivedDemos.length / 2)+0.5)" class="row border rounded py-2 my-1 align-items-center justify-content-between">
             <div class="col-6">{{demo.name}}</div>
             <div class="col-auto">
-              <button (click)="reinstateDemo(demo.id)" class="btn btn-warning">Reinstate Demo</button>
+              <button (click)="reinstateDemo(demo.id)" class="btn btn-warning"><i class="bi bi-arrow-counterclockwise"></i></button>
+              <button (click)="deleteDemo(demo.id)" class="btn btn-danger"><i class="bi bi-trash"></i></button>
             </div>
           </div>
         </div>

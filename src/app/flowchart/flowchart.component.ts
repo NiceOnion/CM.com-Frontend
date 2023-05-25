@@ -23,22 +23,26 @@ export class FlowchartComponent {
   flowchartItemStepContent!: TemplateRef<any>;
   json: any;
   id: number = 1;
+  name: string = "Flow";
 
   flowchartElements: flowchartElement[] = [
-    new flowchartElement("User Input", "user", ""),
-    new flowchartElement("System response", "system", ""),
-  ]
+    new flowchartElement("Customer Input", "user", "")
+  ];
 
   ngOnInit() {
     this.id = Number(this.route.snapshot.paramMap.get('id'));
+    this.apiService.getFlow(this.demoId, this.id).subscribe((data: any) => {      
+        this.flowchartElements.push(new flowchartElement(data.name + " response", "system", ""))
+        this.name = data.name;
+    });
   }
 
   async ngAfterViewInit() {
     await this.apiService.getFlow(this.demoId, this.id).subscribe((data: any) => {
-      this.json = JSON.parse(data.json);      
+      this.json = JSON.parse(data.json);
       this.updateFlowchart()
     }, error => {
-      console.log(error)
+      console.error(error)
     });
   }
 
@@ -48,12 +52,11 @@ export class FlowchartComponent {
 
   saveFlowchart() {
     let json = this.canvasElement.getFlow().toJSON(0);
-    this.apiService.updateFlow(this.id, this.id, "", "", this.canvasElement.getFlow().toJSON(0)).subscribe((data:any) =>{
+    this.apiService.updateFlow(this.id, this.id, this.name, "", this.canvasElement.getFlow().toJSON(0)).subscribe((data:any) =>{
       if (data == true) {
         alert("Saved succesfully!")
       }
     }, error => {
-      console.log(this)
       console.error(error)
     });
   }
@@ -83,7 +86,7 @@ class flowchart {
 }
 
 class flowchartElement {
-  Title: string = "";
+  Title: string = "User Input";
   Data: any;
 
   constructor(title: string, type: string, content: string) {

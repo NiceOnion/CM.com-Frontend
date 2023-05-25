@@ -11,14 +11,15 @@
     </div>
   </div>
   <div class="content text-screen">
+    <div *ngFor="let message of messages" class="message message-{{message.Type}}">{{message.Content}}</div>
     <ng-content select=".phone-messages"></ng-content>
   </div>
   <div class="footer">
     <div class="row align-items-center justify-content-between">
       <div class="col-8">
-      <input type="text" class="" disabled>
+      <input type="text" [(ngModel)]="textMessage" class="" [disabled]="disabled">
       </div>
-      <button class="btn btn-success col-3" disabled>Send</button>
+      <button class="btn btn-success col-3" [disabled]="disabled" (click)="addMessage()">Send</button>
     </div>
   </div>
 </div>
