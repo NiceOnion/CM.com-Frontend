@@ -2,10 +2,6 @@
   background-color: lightgray;
 }
 
-.flow-whatsapp .flowchart-container {
-  background-color: darkseagreen;
-}
-
 .flowchart-container {
   width: 100%;
   min-height: 500px;
@@ -28,9 +24,48 @@
   background: gray;
 }
 
-.flow-whatsapp .flowchart-step {
-  background: green;
+.flow-step-rhombus{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100px; /* Adjust the width as needed */
+  height: 100px; /* Adjust the height as needed */
+  transform: rotate(-45deg);
+  background-color: royalblue; /* Adjust the background color as needed */
+  overflow: hidden;
 }
+
+.flow-step-content-rhombus {
+  transform: rotate(45deg);
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.flow-step-square {
+  width: 200px;
+  height: 100px;
+  background-color: gray;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.flow-step-content-square {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.flow-step-wrapper-padding {
+  padding: 17px 0;
+}
+
+
 
 .flowchart-step-side {
   color: white;
@@ -46,12 +81,9 @@
   background: gray;
 }
 
-.flow-whatsapp .flowchart-step-side {
-  background: green;
-}
-
 .flowchart-step .step-heading {
   padding: 5px;
+  text-anchor: middle;
 }
 
 .flowchart-step .step-content {
@@ -61,5 +93,6 @@
 .palette.row {
   --bs-gutter-x: 0;
 }
+
 
 
