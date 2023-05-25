@@ -33,12 +33,8 @@ export class EditDemoComponent {
     });
     this.apiService.getFlowsOfDemo(this.demo.Id).subscribe((data: any) => {
       data.forEach((element: any) => {
-        console.log(element);
-
         this.flows.push(new Flow(element.id, element.name))
       });
-      console.log(this.flows);
-
     })
   }
   saveDemo() {

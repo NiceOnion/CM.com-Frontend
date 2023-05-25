@@ -53,6 +53,11 @@ export class DashboardDemosComponent implements OnInit {
       window.location.reload();
     })
   }
+  deleteDemo(id: number) {
+    this.apiService.fullDeleteDemo(id).subscribe((data) => {
+      window.location.reload();
+    })
+  }
 }
 
 class Demo {

@@ -67,6 +67,10 @@ export class ApiService {
     return this.http.delete(this.baseUrl.Url + "Demo/" + demoId, { headers: this.apiHeader })
   }
 
+  fullDeleteDemo(demoId: number) {
+    return this.http.delete(this.baseUrl.Url + "Demo/" + demoId + "/Delete", {headers: this.apiHeader})
+  }
+
   getQuestions(demoId: number) {
     return this.http.get(this.baseUrl.Url + "Demo/" + demoId + "/flows", { headers: this.apiHeader })
   }
