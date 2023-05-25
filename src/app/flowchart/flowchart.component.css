@@ -62,4 +62,6 @@
   --bs-gutter-x: 0;
 }
 
-
+.flowchart-item-content-buttons {
+  transform: scale(0.7);
+}

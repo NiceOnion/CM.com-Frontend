@@ -3,30 +3,28 @@
     <div class="fs-3 mb-3">Flows</div>
     <div class="list-group">
       <div class="list-group-item p-0">
-        <button mat-raised-button (click)="createNewFlow()" class="w-100 bg-success text-light"><i class="bi bi-plus-lg"></i> Add Flow</button>
+        <button mat-raised-button (click)="createNewFlow()" class="w-100 bg-success text-light"><i
+            class="bi bi-plus-lg"></i> Add Flow</button>
       </div>
-      <a *ngFor="let flow of flows" href="/edit-question/{{flow.Id}}"
-        class="list-group-item question">{{flow.Name}}</a>
+      <a *ngFor="let flow of flows" href="/edit-question/{{flow.Id}}" class="list-group-item question">{{flow.Name}}</a>
     </div>
   </div>
-  <div class="col-auto mx-auto edit-details-card">
-    <div class="row">
-      <h2 class="col-10">Edit Demo</h2>
-      <a href=" /delete-demo/{{demo.Id}}" class="btn btn-danger col-auto delete-button py-0 my-0 "><i class="bi bi-trash"></i></a>
+  <div class="col-lg-7 col-auto mx-auto edit-details-card">
+    <div class="row justify-content-between">
+      <h2 class="col-auto">Edit Demo</h2>
+      <a href=" /delete-demo/{{demo.Id}}" class="btn btn-danger col-auto delete-button py-0 my-0 "><i
+          class="bi bi-trash"></i></a>
     </div>
     <form>
-      <label class="mt-2">
-        Name:
-        <input type="text" [value]="demo.Name" name="name" [(ngModel)]="name">
-      </label>
-      <label class="mt-2">
-        Description:
-      </label>
-      <textarea name="description" [value]="demo.Description" [(ngModel)]="description">{{demo.Description}}</textarea>
-      <label class="mt-2">
-        <input type="checkbox" name="visibility" [checked]="demo.Visibility" [(ngModel)]="visibility">
-        Visibility
-      </label>
+      <div class="form-floating my-1">
+        <input id="demoName" class="form-control" type="text" [value]="demo.Name" name="name" [(ngModel)]="name">
+        <label for="demoName">Name:</label>
+      </div>
+      <div class="form-floating my-1">
+        <textarea name="description" id="demoDescriptionArea" [value]="demo.Description" [(ngModel)]="description"
+          class="form-control">{{demo.Description}}</textarea>
+          <label for="demoDescriptionArea">Description</label>
+      </div>
       <button type="button" class="btn btn-primary" (click)="saveDemo()">Save</button>
     </form>
   </div>

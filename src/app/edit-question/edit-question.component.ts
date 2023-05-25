@@ -11,10 +11,10 @@ export class EditQuestionComponent {
   @Input() demoType: string = "sms"; //make this an api request
   flowId: number = 1;
 
-  messages: Message[] = [
-    new Message("in", "Hello"),
-    new Message("out", "Hello, how can i help you?\n"),
-    new Message("out", "Or do you have a question I can answer.\n"),
+  messages: Array<{Type: string, Message: string}> = [
+    {Type: "in", Message: "Hello"},
+    {Type: "out", Message: "Hello, How can I help you?"},
+    {Type: "out", Message: "Or do you have an other question I can answer?"},
   ];
   constructor(private elRef: ElementRef, private route: ActivatedRoute) {
   }
@@ -25,16 +25,3 @@ export class EditQuestionComponent {
   }
 }
 
-class Message {
-  Type: string = "in";
-  Content: string = "";
-
-  constructor(type: string, content: string) {
-    if (type == "in" || type == "out") {
-      this.Type = type;
-    } else {
-      this.Type = "in";
-    }
-    this.Content = content;
-  }
-}
