@@ -42,10 +42,5 @@ export class EditQuestionComponent {
       console.error(error);
     });    
   }
-
-  testAlgorithm() {    
-    console.log(this.algorithm.FindSuitableSystemResponse("i would like to hire and/or buy something"));
-    console.log(this.algorithm.FindSuitableSystemResponse("i would like to have some info about something"));
-  }
 }
 

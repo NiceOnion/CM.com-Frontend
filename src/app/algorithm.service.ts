@@ -19,7 +19,12 @@ export class AlgorithmService {
             words?.forEach(wordToLookFor => {
                 if (userInput.includes(wordToLookFor)) currentStepCorrespondingWordsCount++;
             })
-            if (currentStepCorrespondingWordsCount > highestCorrespondingWordCount) foundChild = childStep;
+            
+            if (currentStepCorrespondingWordsCount > highestCorrespondingWordCount){
+                foundChild = childStep;
+                highestCorrespondingWordCount = currentStepCorrespondingWordsCount;
+            } 
+                
         })
 
         let currentSystemResponse = foundChild?.children[0];
