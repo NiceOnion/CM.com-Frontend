@@ -14,6 +14,7 @@ export class DashboardDemosComponent implements OnInit {
   pageNationAmount: number = 0;
   pageNationAmountArchive: number = 0;
   Arr = Array;
+  loggedInUserId = 1;
 
   demos: Demo[] = [];
   archivedDemos: Demo[] = [];
@@ -24,15 +25,18 @@ export class DashboardDemosComponent implements OnInit {
 
   ngOnInit() {
     this.elRef.nativeElement.classList.add("w-100")
+    if(sessionStorage.getItem("currentUserId") != null){
+      this.loggedInUserId = Number(sessionStorage.getItem("currentUserId"));
+    }
 
-    this.apiService.getDemosOfUser(1).subscribe((data: any) => {
+    this.apiService.getDemosOfUser(this.loggedInUserId).subscribe((data: any) => {
       this.demos = data;
       this.pageNationAmount = Math.ceil(this.demos.length / this.cardAmountPerPage);
     },
       error => {
         console.log(error)
       })
-    this.apiService.getArchivedDemosOfUser(1).subscribe((data: any) => {
+    this.apiService.getArchivedDemosOfUser(this.loggedInUserId).subscribe((data: any) => {
       this.archivedDemos = data;
       this.pageNationAmountArchive = Math.ceil(this.archivedDemos.length / this.cardAmountPerPage);
     },

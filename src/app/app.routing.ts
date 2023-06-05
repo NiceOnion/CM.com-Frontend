@@ -11,12 +11,12 @@ import {AuthGuard, LoginRedirect} from "./app.auth";
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
-  { path: 'edit-demo/:id', component: EditDemoComponent },
+  { path: 'edit-demo/:id', component: EditDemoComponent, canActivate: [AuthGuard]},
   { path: 'login', component: LoginComponent, canActivate: [LoginRedirect] },
-  { path: 'delete-demo/:id', component: DeleteDemoComponent },
-  { path: 'dashboard-demos', component: DashboardDemosComponent },
-  { path: 'edit-question/:id', component: EditQuestionComponent },
-  { path: 'evaluate-demo/:id', component: EvaluateDemoComponent}
+  { path: 'delete-demo/:id', component: DeleteDemoComponent, canActivate: [AuthGuard] },
+  { path: 'dashboard-demos', component: DashboardDemosComponent, canActivate: [AuthGuard] },
+  { path: 'edit-question/:id', component: EditQuestionComponent, canActivate: [AuthGuard] },
+  { path: 'evaluate-demo/:id', component: EvaluateDemoComponent, canActivate: [AuthGuard]}
   // Add any other routes here
 ];
 
