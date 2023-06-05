@@ -86,7 +86,7 @@ class flowchart {
 }
 
 class flowchartElement {
-  Title: string = "User Input";
+  Title: string = "Customer Input";
   Data: any;
 
   constructor(title: string, type: string, content: string) {
