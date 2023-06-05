@@ -19,7 +19,7 @@ export class PhoneDisplayComponent {
   }
   addMessage() {
     if (this.textMessage != "") {
-      this.messages.push(new Message("in", this.textMessage))
+      this.messages.push(new Message("out", this.textMessage))
       this.textMessage = "";
     }
   }

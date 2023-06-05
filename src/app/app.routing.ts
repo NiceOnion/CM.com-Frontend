@@ -6,6 +6,7 @@ import {EditDemoComponent} from "./edit-demo/edit-demo.component";
 import {DeleteDemoComponent}from "./delete-demo/delete-demo.component"
 import { DashboardDemosComponent } from './dashboard-demos/dashboard-demos.component';
 import {EditQuestionComponent} from "./edit-question/edit-question.component";
+import {EvaluateDemoComponent} from "./evaluate-demo/evaluate-demo.component";
 import {AuthGuard, LoginRedirect} from "./app.auth";
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'delete-demo/:id', component: DeleteDemoComponent },
   { path: 'dashboard-demos', component: DashboardDemosComponent },
   { path: 'edit-question/:id', component: EditQuestionComponent },
+  { path: 'evaluate-demo/:id', component: EvaluateDemoComponent}
   // Add any other routes here
 ];
 
