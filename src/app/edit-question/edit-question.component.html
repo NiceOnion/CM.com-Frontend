@@ -1,7 +1,7 @@
 <div class="row">
   <app-flowchart class="col-md-8" [demoType]="demoType"></app-flowchart>
   <div class="col-md-4">
-    <app-phone-display [demoType]="demoType" [disabled]="true">
-    </app-phone-display>
+    <app-phone-display [demoType]="demoType" [disabled]="true" [messageObjects]="messageObjects" [companyName]="companyName"></app-phone-display>
   </div>
+  <button (click)="testAlgorithm()" class="btn btn-success">Test Algorithm</button>
 </div>

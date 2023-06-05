@@ -1,25 +1,28 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-phone-display',
   templateUrl: './phone-display.component.html',
   styleUrls: ['./phone-display.component.css', '../edit-question/edit-question.component.css']
 })
-export class PhoneDisplayComponent {
+export class PhoneDisplayComponent implements OnInit {
   @Input() disabled: boolean = false;
   @Input() demoType: string = "sms";
-  @Input() messageObjects: Array<{ Type: string, Message: string }> = []
+  @Input() companyName: string = "Your company name";
+  @Input() messageObjects: Array<{Type:string, Message: string}> = [];
   textMessage: string = "";
   messages: Message[] = [];
-
-  ngOnInit() {
+  constructor() {    
     this.messageObjects.forEach(message => {
       this.messages.push(new Message(message.Type, message.Message))
-    })
+    })    
+  }
+
+  ngOnInit() {
   }
   addMessage() {
     if (this.textMessage != "") {
-      this.messages.push(new Message("in", this.textMessage))
+      this.messages.push(new Message("out", this.textMessage))
       this.textMessage = "";
     }
   }
