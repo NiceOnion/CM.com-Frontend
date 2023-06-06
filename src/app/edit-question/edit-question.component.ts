@@ -31,8 +31,6 @@ export class EditQuestionComponent {
         let hasChild = true;
         this.algorithm = new AlgorithmService(json)
         while (hasChild) {
-          console.log(json);
-          
           this.messageObjects.push({ Type: json.data.Type, Message: json.data.Content })
           if (json.children.length == 0) hasChild = false;
           else json = json.children[0];

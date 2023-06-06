@@ -6,14 +6,10 @@ export class AlgorithmService {
         this.currentStep = this.rootStep;
     }
     FindSuitableSystemResponse(userInput: string): jsonStep[] {
-        console.log(this.currentStep);
-        console.log(userInput);
-        
         let foundChild = this.currentStep;
         let jsonSteps: jsonStep[] = [];
 
         if (this.currentStep != this.rootStep) {
-            console.log(this.currentStep);
             while (this.currentStep?.children[0]?.data?.Type == "system") this.currentStep = this.currentStep.children[0];
 
             let highestCorrespondingWordCount = 0;
@@ -22,12 +18,9 @@ export class AlgorithmService {
                 let currentStepCorrespondingWordsCount = 0;
 
                 let words = childStep.data?.Content?.toLowerCase().replace(/\s/g, "").split(",");
-                console.log(words);
                 
                 words?.forEach(wordToLookFor => {
                     if (userInput.includes(wordToLookFor)) currentStepCorrespondingWordsCount++;
-                    console.log(currentStepCorrespondingWordsCount);
-                    
                 })
 
                 if (currentStepCorrespondingWordsCount > highestCorrespondingWordCount) {
@@ -50,12 +43,7 @@ export class AlgorithmService {
             
             let startFlow = false;
             words?.forEach(wordToLookFor => {
-                console.log(wordToLookFor);
-                console.log(userInput);
-                
                 if (userInput.toLowerCase().includes(wordToLookFor)) startFlow = true;
-                console.log(startFlow);
-                
             })
             if (startFlow) {
                 let currentSystemResponse = this.currentStep?.children[0];

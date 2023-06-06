@@ -25,8 +25,6 @@ export class PhoneDisplayComponent implements OnInit {
       this.messages.push(new Message(message.Type, message.Message))
     })
     this.apiService.getFlow(1, this.flowId).subscribe((data: any) => {
-      console.log(JSON.parse(data.json));
-      
       this.algorithmService = new AlgorithmService(JSON.parse(data.json).root);
     })
   }
