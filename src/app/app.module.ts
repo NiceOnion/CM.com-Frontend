@@ -22,6 +22,8 @@ import { PhoneDisplayComponent } from './phone-display/phone-display.component';
 import { EditFlowElementComponent } from './edit-user-flow-element/edit-flow-element.component';
 import { DeleteDemoComponent } from './delete-demo/delete-demo.component';
 import { NewFlowComponent } from './new-flow/new-flow.component';
+import { EvaluateDemoComponent } from './evaluate-demo/evaluate-demo.component';
+import { MatPaginatorModule } from '@angular/material/paginator'
 
 @NgModule({
   declarations: [
@@ -39,6 +41,7 @@ import { NewFlowComponent } from './new-flow/new-flow.component';
     PhoneDisplayComponent,
     EditFlowElementComponent,
     NewFlowComponent,
+    EvaluateDemoComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,6 +53,7 @@ import { NewFlowComponent } from './new-flow/new-flow.component';
     MatInputModule,
     FormsModule,
     NgFlowchartModule,
+    MatPaginatorModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
