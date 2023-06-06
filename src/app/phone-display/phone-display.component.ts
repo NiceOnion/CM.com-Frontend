@@ -1,4 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { AlgorithmService } from 'app/algorithm.service';
+import { ApiService } from 'app/api.service';
 
 @Component({
   selector: 'app-phone-display',
@@ -12,19 +15,37 @@ export class PhoneDisplayComponent implements OnInit {
   @Input() messageObjects: Array<{Type:string, Message: string}> = [];
   textMessage: string = "";
   messages: Message[] = [];
-  constructor() {    
+  flowId = 1;
+  algorithmService: any;
+  constructor(private apiService: ApiService,private route: ActivatedRoute) {    
+    this.route.params.subscribe(params => {
+      this.flowId = params['id'];
+    });
     this.messageObjects.forEach(message => {
       this.messages.push(new Message(message.Type, message.Message))
-    })    
+    })
+    this.apiService.getFlow(1, this.flowId).subscribe((data: any) => {
+      console.log(JSON.parse(data.json));
+      
+      this.algorithmService = new AlgorithmService(JSON.parse(data.json).root);
+    })
   }
 
   ngOnInit() {
   }
+
   addMessage() {
     if (this.textMessage != "") {
       this.messages.push(new Message("out", this.textMessage))
+      this.algorithmService.FindSuitableSystemResponse(this.textMessage).forEach((data: any) => {
+            this.messages.push(new Message("in", data.data.Content))
+      })
       this.textMessage = "";
     }
+  }
+
+  useAlgorithm() {
+
   }
 }
 
