@@ -29,3 +29,7 @@ Flowchart arrow
 app-home {
   width: 100%;
 }
+
+.mat-mdc-paginator-container {
+  justify-content: center !important;
+}

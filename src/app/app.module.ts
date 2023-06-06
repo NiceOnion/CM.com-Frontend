@@ -23,6 +23,7 @@ import { EditFlowElementComponent } from './edit-user-flow-element/edit-flow-ele
 import { DeleteDemoComponent } from './delete-demo/delete-demo.component';
 import { NewFlowComponent } from './new-flow/new-flow.component';
 import { EvaluateDemoComponent } from './evaluate-demo/evaluate-demo.component';
+import { MatPaginatorModule } from '@angular/material/paginator'
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { EvaluateDemoComponent } from './evaluate-demo/evaluate-demo.component';
     MatInputModule,
     FormsModule,
     NgFlowchartModule,
+    MatPaginatorModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
