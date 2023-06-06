@@ -14,7 +14,7 @@ export class AlgorithmService {
 
         if (this.currentStep != this.rootStep) {
             console.log(this.currentStep);
-            while (this.currentStep?.children[0].data?.Type == "system") this.currentStep = this.currentStep.children[0];
+            while (this.currentStep?.children[0]?.data?.Type == "system") this.currentStep = this.currentStep.children[0];
 
             let highestCorrespondingWordCount = 0;
 
@@ -22,8 +22,12 @@ export class AlgorithmService {
                 let currentStepCorrespondingWordsCount = 0;
 
                 let words = childStep.data?.Content?.toLowerCase().replace(/\s/g, "").split(",");
+                console.log(words);
+                
                 words?.forEach(wordToLookFor => {
                     if (userInput.includes(wordToLookFor)) currentStepCorrespondingWordsCount++;
+                    console.log(currentStepCorrespondingWordsCount);
+                    
                 })
 
                 if (currentStepCorrespondingWordsCount > highestCorrespondingWordCount) {
@@ -57,9 +61,9 @@ export class AlgorithmService {
                 let currentSystemResponse = this.currentStep?.children[0];
                 while (currentSystemResponse?.data?.Type == "system") {
                     jsonSteps.push(currentSystemResponse);
+                    this.currentStep = currentSystemResponse;
                     currentSystemResponse = currentSystemResponse.children[0];
                 }
-                this.currentStep = currentSystemResponse;
             } else {
                 this.currentStep = this.rootStep;
             }
