@@ -5,36 +5,53 @@
     </div>
 
     <div class="palette row">
-      <div class="flowchart-step-side col-auto" *ngFor="let el of flowchartElements">
-        <div *ngIf="el.Data.type === 'system'" [ngFlowchartStep]="{template: flowchartSystemItemStepContent, type: 'flowchartStepContent', data: el.Data}"></div>
-        <div *ngIf="el.Data.type === 'user'" [ngFlowchartStep]="{template: flowchartCustomerItemStepContent, type: 'flowchartStepContent', data: el.Data}"></div>
-        <div class="p-2">{{el.Title}}</div>
+      <div class="col-auto" *ngFor="let el of flowchartElements">
+        <div class="flowchart-step-side col-auto p-1" *ngIf="el.Data.Type == 'system'"
+             [ngFlowchartStep]="{template: flowchartSystemItemStepContent, type: 'flowchartSystemStep', data: el.Data}">{{el.Data.Title}}</div>
+        <div class="flowchart-step-side col-auto p-1" *ngIf="el.Data.Type == 'user'"
+             [ngFlowchartStep]="{template: flowchartCustomerItemStepContent, type: 'flowchartCustomerStep', data: el.Data}">{{el.Data.Title}}</div>
       </div>
       <ng-template #flowchartSystemItemStepContent let-data>
-        <div class="flow-step-wrapper-padding">
-          <div class="flow-step-square">
-            <div class="flow-step-content-square">
+        <div class="flowchart-step step-container px-4 flowchart-system-step">
+          <div class="flow-step-rhombus">
+            <div class="flow-step-content-rhombus">
               <div class="step-heading">
                 {{data.data.Title}}
               </div>
               <div class="step-content">
-                <div>
-                  <small>{{data.data.Content}}</small>
+                <div class="step-content-text">
+                  {{data.data.Content}}
                 </div>
-                <div class="flowchart-item-content-buttons">
+                <div class="step-content-buttons">
                   <button class="btn btn-warning p-1" (click)="onFlowchartEdit(data.id, data)"><span
-                    class="material-icons">edit</span></button>
+                    class="material-icons">edit</span>
+                  </button>
                   <button class="btn btn-danger p-1" (click)="deleteFlowchartItem(data.id)"><span
-                    class="material-icons">delete</span></button>
+                    class="material-icons">delete</span>
+                  </button>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </ng-template>
-
-      <ng-template #flowchartCustomerItemStepContent>
-
+      <ng-template #flowchartCustomerItemStepContent let-data>
+        <div class="flowchart-step step-container px-4 flowchart-customer-step">
+          <div class="step-heading">
+            {{data.data.Title}}
+          </div>
+          <div class="step-content">
+            <div class="step-content-text">
+              {{data.data.Content}}
+            </div>
+            <div class="step-content-buttons">
+              <button class="btn btn-warning p-1" (click)="onFlowchartEdit(data.id, data)"><span class="material-icons">edit</span>
+              </button>
+              <button class="btn btn-danger p-1" (click)="deleteFlowchartItem(data.id)"><span class="material-icons">delete</span>
+              </button>
+            </div>
+          </div>
+        </div>
       </ng-template>
     </div>
   </div>
