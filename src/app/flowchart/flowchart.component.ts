@@ -19,8 +19,11 @@ export class FlowchartComponent {
   @Input() demoId: number = 1;
   @ViewChild(NgFlowchartCanvasDirective)
   canvasElement!: NgFlowchartCanvasDirective;
-  @ViewChild('flowchartItemStepContent')
-  flowchartItemStepContent!: TemplateRef<any>;
+  @ViewChild('flowchartSystemItemStepContent')
+  flowSystemStep!: TemplateRef<any>;
+
+  @ViewChild('flowchartCustomerItemStepContent')
+  flowCustomerStep!: TemplateRef<any>;
   json: any;
   id: number = 1;
   name: string = "Flow";
@@ -31,15 +34,17 @@ export class FlowchartComponent {
 
   ngOnInit() {
     this.id = Number(this.route.snapshot.paramMap.get('id'));
-    this.apiService.getFlow(this.demoId, this.id).subscribe((data: any) => {      
+    this.apiService.getFlow(this.demoId, this.id).subscribe((data: any) => {
         this.flowchartElements.push(new flowchartElement(data.name + " response", "system", ""))
         this.name = data.name;
     });
   }
 
-  async ngAfterViewInit() {
-    await this.apiService.getFlow(this.demoId, this.id).subscribe((data: any) => {
+  ngAfterViewInit() {
+    this.apiService.getFlow(this.demoId, this.id).subscribe((data: any) => {
       this.json = JSON.parse(data.json);
+      this.stepRegistry.registerStep("flowchartSystemStep", this.flowSystemStep);
+      this.stepRegistry.registerStep("flowchartCustomerStep", this.flowCustomerStep);
       this.updateFlowchart()
     }, error => {
       console.error(error)
@@ -62,8 +67,7 @@ export class FlowchartComponent {
   }
 
   updateFlowchart() {
-    this.stepRegistry.registerStep("flowchartStepContent", this.flowchartItemStepContent)
-    let jsonParse = this.json
+    let jsonParse = this.json;
 
     this.canvasElement.getFlow().upload(jsonParse);
   }
