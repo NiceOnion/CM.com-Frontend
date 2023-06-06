@@ -37,12 +37,22 @@ export class AlgorithmService {
             }
             this.currentStep = foundChild;
         } else {
-            let currentSystemResponse = this.currentStep?.children[0];
-            while (currentSystemResponse?.data?.Type == "system") {
-                jsonSteps.push(currentSystemResponse);
-                currentSystemResponse = currentSystemResponse.children[0];
+
+            let words = this.currentStep?.data?.Content?.toLowerCase().replace(/\s/g, "").split(",");
+            let startFlow = false;
+            words?.forEach(wordToLookFor => {
+                if (userInput.includes(wordToLookFor)) startFlow = true;
+            })
+            if (startFlow) {
+                let currentSystemResponse = this.currentStep?.children[0];
+                while (currentSystemResponse?.data?.Type == "system") {
+                    jsonSteps.push(currentSystemResponse);
+                    currentSystemResponse = currentSystemResponse.children[0];
+                }
+                this.currentStep = foundChild;
+            } else {
+                this.currentStep = this.rootStep;
             }
-            this.currentStep = foundChild;
         }
         return jsonSteps;
     }
