@@ -16,7 +16,7 @@ export class EditQuestionComponent {
   algorithm?: any;
   companyName: string = "";
 
-  messageObjects: Array<{ Type: string, Message: string }> = [];
+  messageObjects!: Array<{ Type: string, Message: string }>;
 
   constructor(private elRef: ElementRef, private route: ActivatedRoute, private apiService: ApiService) {
     this.elRef.nativeElement.classList.add("w-100")
@@ -31,7 +31,9 @@ export class EditQuestionComponent {
         let hasChild = true;
         this.algorithm = new AlgorithmService(json)
         while (hasChild) {
-          this.messageObjects.push({ Type: json.data.Type, Message: json.data.Content })
+          let type = "in";
+          if (json.data.Type == "user") type = "out";
+          this.messageObjects.push({ Type: type, Message: json.data.Content })
           if (json.children.length == 0) hasChild = false;
           else json = json.children[0];
         }

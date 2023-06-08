@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-evaluate-demo',
@@ -9,9 +9,12 @@ import { Router } from '@angular/router';
 export class EvaluateDemoComponent {
   @Input() demoType: string = "sms";
   flowId: number = 6;
-  constructor(private router: Router) {
+  constructor(private router: Router, private route: ActivatedRoute) {
+    this.route.params.subscribe((parameter) => {
+      this.flowId = parameter['id'];
+    })
   }
   goBackBtn(){
-    this.router.navigate(["edit-question/" + this.flowId], {replaceUrl: true})
+    this.router.navigate(["edit-question/" + this.flowId], {replaceUrl: false})
   }
 }

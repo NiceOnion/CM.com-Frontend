@@ -32,7 +32,7 @@ export class DashboardDemosComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+
     this.elRef.nativeElement.classList.add("w-100")
     if (sessionStorage.getItem("currentUserId") != null) {
       this.loggedInUserId = Number(sessionStorage.getItem("currentUserId"));
@@ -62,7 +62,7 @@ export class DashboardDemosComponent implements OnInit {
     this.paginator.length = this.dataSource.length;
     this.updateDisplayedItems();
   }
-  
+
   onPageChange(event: PageEvent) {
     this.paginator.pageIndex = event.pageIndex;
     this.paginator.pageSize = event.pageSize;
@@ -88,9 +88,11 @@ export class DashboardDemosComponent implements OnInit {
     })
   }
   deleteDemo(id: number) {
-    this.apiService.fullDeleteDemo(id).subscribe((data) => {
-      window.location.reload();
-    })
+    if (confirm("Are you sure you want to delete this demo?")) {
+      this.apiService.fullDeleteDemo(id).subscribe((data) => {
+        window.location.reload();
+      })
+    }
   }
 }
 
