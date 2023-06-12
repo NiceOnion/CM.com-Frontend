@@ -35,7 +35,7 @@ export class DashboardDemosComponent implements OnInit {
   ngOnInit() {
 
     this.elRef.nativeElement.classList.add("w-100")
-    if (this.cookieService.get('currentUserName') != "") {
+    if (this.cookieService.get('currentUserId') != "") {
       this.loggedInUserId = Number(this.cookieService.get('currentUserId'));
     }
 
