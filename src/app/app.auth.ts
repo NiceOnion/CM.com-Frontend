@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-  constructor(private _router : Router){}
+  constructor(private _router : Router, private cookieService: CookieService){}
   canActivate () : boolean{
-    if(sessionStorage.getItem('currentUserName') != null){
+    if(this.cookieService.get('currentUserId').toString() != ""){
       return true;
     }
     else{
@@ -21,20 +22,14 @@ export class AuthGuard implements CanActivate {
   providedIn: 'root'
 })
 export class LoginRedirect implements CanActivate {
-  constructor(private _router : Router){}
+  constructor(private _router : Router, private cookieService: CookieService){}
   canActivate () : boolean{
-    let name = localStorage.getItem('currentUserName');
-    let id = localStorage.getItem('currentUserId');
-    if(name != null && id != null){
-      sessionStorage.setItem('currentUserId', id)
-      sessionStorage.setItem('currentUserName', name)
-    }
-    if(sessionStorage.getItem('currentUserName') == null){
-      return true;
-    }
-    else{
+    if(this.cookieService.get('currentUserId').toString() != ""){
       this._router.navigate([''])
       return false;
+    }
+    else{
+      return true;
     }
   }
 }

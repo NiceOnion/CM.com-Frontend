@@ -4,6 +4,7 @@ import { MatDialog } from "@angular/material/dialog";
 import { NewDemoComponent } from "../new-demo/new-demo.component";
 import { CardComponent } from 'app/card-component/card.component';
 import { MatPaginator, PageEvent } from '@angular/material/paginator'
+import {CookieService} from "ngx-cookie-service";
 
 @Component({
   selector: 'dashboard-demos-component',
@@ -27,15 +28,15 @@ export class DashboardDemosComponent implements OnInit {
   demos: Demo[] = [];
   archivedDemos: Demo[] = [];
 
-  constructor(private apiService: ApiService, private elRef: ElementRef, public dialog: MatDialog) {
+  constructor(private apiService: ApiService, private elRef: ElementRef, public dialog: MatDialog, private cookieService: CookieService) {
     this.demos = [];
   }
 
   ngOnInit() {
 
     this.elRef.nativeElement.classList.add("w-100")
-    if (sessionStorage.getItem("currentUserId") != null) {
-      this.loggedInUserId = Number(sessionStorage.getItem("currentUserId"));
+    if (this.cookieService.get('currentUserId') != "") {
+      this.loggedInUserId = Number(this.cookieService.get('currentUserId'));
     }
 
     this.apiService.getDemosOfUser(this.loggedInUserId).subscribe((data: any) => {

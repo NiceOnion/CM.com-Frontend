@@ -1,11 +1,13 @@
 import { Component} from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../api.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
+  providers: [CookieService]
 })
 export class LoginComponent {
   name: string = '';
@@ -14,7 +16,7 @@ export class LoginComponent {
   loading: boolean = false;
   savePasswordBox: boolean = false;
   private data: any;
-  constructor(private ApiService: ApiService, private router: Router) {}
+  constructor(private ApiService: ApiService, private router: Router, private cookieService: CookieService) {}
   //Fetches an account from the back-end and stores them in a local cookie
   loginClick(): void {
     this.error = "";
@@ -27,8 +29,8 @@ export class LoginComponent {
             'No account was found. Did you use the correct username and password?';
         } else {
           this.data = data;
-          sessionStorage.setItem('currentUserId', data);
-          sessionStorage.setItem('currentUserName', this.name)
+          this.cookieService.set('currentUserId', this.data)
+          this.cookieService.set('currentUserName', this.name)
           this.loading = false;
           this.savePasswordBox = true;
         }
@@ -42,8 +44,8 @@ export class LoginComponent {
 
   toHome(savePassword: boolean){
     if(savePassword){
-      localStorage.setItem('currentUserId', this.data);
-      localStorage.setItem('currentUserName', this.name)
+      this.cookieService.set('currentUserId', this.data,30)
+      this.cookieService.set('currentUserName', this.name,30)
     }
     this.router.navigate(['']);
   }
