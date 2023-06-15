@@ -20,6 +20,7 @@ export class EditQuestionComponent {
 
   constructor(private elRef: ElementRef, private route: ActivatedRoute, private apiService: ApiService) {
     this.elRef.nativeElement.classList.add("w-100")
+    
     this.flowId = Number(this.route.snapshot.paramMap.get('id'));
 
     this.apiService.getFlow(this.demoId, this.flowId).subscribe((data: any) => {

@@ -3,6 +3,7 @@ import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog
 import {ApiService} from "../api.service";
 import {Router} from "@angular/router";
 import {map, Observable, pluck} from "rxjs";
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-new-demo',
@@ -13,11 +14,11 @@ export class NewDemoComponent implements OnInit{
   demoName : string = "test demo";
   loggedInUserId = 1;
 
-  constructor(private router: Router, public dialogRef: MatDialogRef<NewDemoComponent>, @Inject(MAT_DIALOG_DATA) public data: any, private ApiService: ApiService ) {}
+  constructor(private router: Router, public dialogRef: MatDialogRef<NewDemoComponent>, @Inject(MAT_DIALOG_DATA) public data: any, private ApiService: ApiService, private cookies: CookieService) {}
 
   ngOnInit() {
-    if(sessionStorage.getItem("currentUserId") != null){
-      this.loggedInUserId = Number(sessionStorage.getItem("currentUserId"));
+    if(this.cookies.get("currentUserId") != ""){
+      this.loggedInUserId = Number(this.cookies.get("currentUserId"));
     }
   }
 
